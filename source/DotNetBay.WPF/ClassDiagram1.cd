@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DotNetBay.Core.Execution.Auctioneer">
+    <Position X="4.25" Y="4.75" Width="2.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNetBay.Core.Execution.AuctionRunner">
+    <Position X="4.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNetBay.Core.AuctionService">
+    <Position X="1.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNetBay.Core.SimpleMemberService">
+    <Position X="1.5" Y="4.75" Width="2.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNetBay.Model.Auction">
+    <Position X="10.5" Y="6" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DotNetBay.Model.Bid">
+    <Position X="12.75" Y="6" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DotNetBay.Model.Member">
+    <Position X="15" Y="6" Width="2" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="DotNetBay.Data.FileStorage.InMemoryMainRepository">
+    <Position X="7.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DotNetBay.Data.FileStorage.FileSystemMainRepository">
+    <Position X="7.25" Y="4.75" Width="2.25" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="DotNetBay.Core.Execution.IAuctionRunner">
+    <Position X="11.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DotNetBay.Core.Execution.IAuctioneer">
+    <Position X="13.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DotNetBay.Core.IAuctionService">
+    <Position X="15.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DotNetBay.Core.IMemberService">
+    <Position X="13.25" Y="3.25" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="DotNetBay.Interfaces.IMainRepository">
+    <Position X="15.25" Y="3.25" Width="1.75" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
