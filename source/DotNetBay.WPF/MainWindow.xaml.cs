@@ -1,18 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 using DotNetBay.Core;
 using DotNetBay.Core.Execution;
@@ -23,23 +12,23 @@ namespace DotNetBay.WPF
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        private ObservableCollection<Auction> auctions = new ObservableCollection<Auction>();
+        private ObservableCollection<Auction> auctions;
 
         private AuctionService auctionService;
 
         public MainWindow()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.DataContext = this;
 
             var app = Application.Current as App;
 
-            app.AuctionRunner.Auctioneer.AuctionClosed += AuctioneerOnAuctionClosed;
-            app.AuctionRunner.Auctioneer.BidAccepted += AuctioneerOnBidAccepted;
-            app.AuctionRunner.Auctioneer.BidDeclined += AuctioneerOnBidDeclined;
+            app.AuctionRunner.Auctioneer.AuctionClosed += this.AuctioneerOnAuctionClosed;
+            app.AuctionRunner.Auctioneer.BidAccepted += this.AuctioneerOnBidAccepted;
+            app.AuctionRunner.Auctioneer.BidDeclined += this.AuctioneerOnBidDeclined;
 
             this.auctionService = new AuctionService(app.MainRepository, new SimpleMemberService(app.MainRepository));
 
@@ -48,16 +37,20 @@ namespace DotNetBay.WPF
 
         private void AuctioneerOnBidDeclined(object sender, ProcessedBidEventArgs processedBidEventArgs)
         {
-
+            var allAuctionsFromService = this.auctionService.GetAll();
+            this.Auctions = new ObservableCollection<Auction>(allAuctionsFromService);
         }
 
         private void AuctioneerOnBidAccepted(object sender, ProcessedBidEventArgs processedBidEventArgs)
         {
+            var allAuctionsFromService = this.auctionService.GetAll();
+            this.Auctions = new ObservableCollection<Auction>(allAuctionsFromService);
         }
 
         private void AuctioneerOnAuctionClosed(object sender, AuctionEventArgs auctionEventArgs)
         {
-            
+            var allAuctionsFromService = this.auctionService.GetAll();
+            this.Auctions = new ObservableCollection<Auction>(allAuctionsFromService);
         }
 
         public ObservableCollection<Auction> Auctions
@@ -66,20 +59,52 @@ namespace DotNetBay.WPF
             {
                 return this.auctions;
             }
+
+            private set
+            {
+                this.auctions = value;
+                this.OnPropertyChanged();
+            }
         }
 
-        private void AddNewAuctionButton_Click(object sender, RoutedEventArgs e)
+        private void AddNewAuctionButtonClick(object sender, RoutedEventArgs e)
         {
             var sellView = new SellView();
             sellView.ShowDialog(); // Blocking
 
-            this.auctions = new ObservableCollection<Auction>(this.auctionService.GetAll());
+            var allAuctionsFromService = this.auctionService.GetAll();
 
+            /* Option A: Full Update via INotifyPropertyChanged, not performant */
+            /* ================================================================ */
+            this.Auctions = new ObservableCollection<Auction>(allAuctionsFromService);
+
+            /////* Option B: Let WPF only update the List and detect the additions */
+            /////* =============================================================== */
+            ////var toAdd = allAuctionsFromService.Where(a => !this.auctions.Contains(a));
+            ////foreach (var auction in toAdd)
+            ////{
+            ////    this.auctions.Add(auction);
+            ////}
         }
 
-        private void PlaceBidButton_Click(object sender, RoutedEventArgs e)
+        private void PlaceBidButtonClick(object sender, RoutedEventArgs e)
         {
+            var currentAuction = (Auction)this.AuctionsDataGrid.SelectedItem;
 
+            var sellView = new BidView(currentAuction);
+            sellView.ShowDialog(); // Blocking
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = this.PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
     }
 }

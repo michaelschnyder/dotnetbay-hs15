@@ -22,10 +22,10 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Padding="5" Margin="0,5,5,5"  HorizontalAlignment="Left" Click="AddNewAuctionButton_Click">New Auction</Button>
+            <Button Padding="5" Margin="0,5,5,5"  HorizontalAlignment="Left" Click="AddNewAuctionButtonClick">New Auction</Button>
         </StackPanel>
 
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Auctions}" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid Name="AuctionsDataGrid" Grid.Row="2" ItemsSource="{Binding Auctions}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
 
                 <DataGridTemplateColumn Header="Auction">
@@ -43,6 +43,7 @@
 
                 <DataGridTextColumn Binding="{Binding StartPrice, StringFormat=\{0:C\}}" Header="Start Price"/>
                 <DataGridTextColumn Binding="{Binding CurrentPrice, StringFormat=\{0:C\}}" Header="Current Price"/>
+                <DataGridTextColumn Binding="{Binding Bids.Count}" Header="Bids"/>
                 <DataGridTextColumn Binding="{Binding StartDateTimeUtc, StringFormat=dd.MM.yyy HH:mm:ss}" Header="Starts"/>
                 <DataGridTextColumn Binding="{Binding EndDateTimeUtc, StringFormat=dd.MM.yyy HH:mm:ss}" Header="Ends" />
                 <DataGridTextColumn Binding="{Binding Seller.DisplayName}" Header="Seller" />
@@ -53,7 +54,7 @@
                 <DataGridTemplateColumn Header="Place Bid">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Background="Green" Click="PlaceBidButton_Click" Visibility="{Binding ., Converter={StaticResource AuctionToIsRunningConverter}}">Place</Button>
+                            <Button Background="Green" Click="PlaceBidButtonClick" Visibility="{Binding ., Converter={StaticResource AuctionToIsRunningConverter}}">Place</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
