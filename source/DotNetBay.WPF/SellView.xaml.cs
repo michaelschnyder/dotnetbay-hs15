@@ -32,7 +32,7 @@ namespace DotNetBay.WPF
 
         public SellView()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.DataContext = this;
 
@@ -49,19 +49,19 @@ namespace DotNetBay.WPF
                                   };
         }
 
-        private void AddAuction_Click(object sender, RoutedEventArgs e)
+        private void AddAuctionClick(object sender, RoutedEventArgs e)
         {
             this.auctionService.Save(this.newAuction);
 
             this.Close();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButtonClick(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void SelectImageButton_Click(object sender, RoutedEventArgs e)
+        private void SelectImageButtonClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
