@@ -96,13 +96,36 @@ namespace DotNetBay.Test.Core
         }
 
         [TestCase]
+        public void Auction_StartTimeHasArrived_AuctionGetsRunning()
+        {
+            var repo = new InMemoryMainRepository();
+            var auctioneer = new Auctioneer(repo);
+
+            var auction = CreateAndStoreAuction(repo, DateTime.UtcNow.AddHours(-1), DateTime.UtcNow.AddHours(1));
+
+            Assert.IsFalse(auction.IsRunning);
+
+            auctioneer.DoAllWork();
+
+            Assert.IsTrue(auction.IsRunning);
+
+            // Turn back the time
+            auction.EndDateTimeUtc = DateTime.UtcNow;
+
+            auctioneer.DoAllWork();
+
+            Assert.IsTrue(auction.IsClosed);
+            Assert.IsFalse(auction.IsRunning);
+        }
+
+        [TestCase]
         public void Auction_EndTimeHasArrived_AuctionGetsClosed()
         {
             var repo = new InMemoryMainRepository();
             var auctioneer = new Auctioneer(repo);
 
             var auction = CreateAndStoreAuction(repo, DateTime.UtcNow.AddHours(-1), DateTime.UtcNow.AddHours(1));
-            
+
             auctioneer.DoAllWork();
 
             Assert.IsFalse(auction.IsClosed);
@@ -113,10 +136,11 @@ namespace DotNetBay.Test.Core
             auctioneer.DoAllWork();
 
             Assert.IsTrue(auction.IsClosed);
+            Assert.IsFalse(auction.IsRunning);
         }
 
         [TestCase]
-        public void Auction_HasOneBidAndGetsClose_TheBidderShouldBeTheWinner()
+        public void Auction_HasOneBidAndEnds_TheBidderShouldBeTheWinner()
         {
             var repo = new InMemoryMainRepository();
             var auctioneer = new Auctioneer(repo);
@@ -134,12 +158,11 @@ namespace DotNetBay.Test.Core
 
             auctioneer.DoAllWork();
 
-            Assert.IsTrue(auction.IsClosed);
             Assert.AreEqual(auction.Winner, bidder2);
         }
 
         [TestCase]
-        public void Auction_WhenClosed_EventIsRaised()
+        public void Auction_WhenStarted_EventIsRaised()
         {
             var repo = new InMemoryMainRepository();
             var auctioneer = new Auctioneer(repo);
@@ -147,7 +170,25 @@ namespace DotNetBay.Test.Core
             var auction = CreateAndStoreAuction(repo, DateTime.UtcNow.AddHours(-1), DateTime.UtcNow.AddHours(1));
 
             AuctionEventArgs raisedArgs = null;
-            auctioneer.AuctionClosed += (sender, args) => raisedArgs = args;
+            auctioneer.AuctionStarted += (sender, args) => raisedArgs = args;
+
+            auctioneer.DoAllWork();
+
+            Assert.NotNull(raisedArgs);
+            Assert.NotNull(raisedArgs.Auction);
+            Assert.AreEqual(auction, raisedArgs.Auction);
+        }
+
+        [TestCase]
+        public void Auction_WhenEnded_EventIsRaised()
+        {
+            var repo = new InMemoryMainRepository();
+            var auctioneer = new Auctioneer(repo);
+
+            var auction = CreateAndStoreAuction(repo, DateTime.UtcNow.AddHours(-1), DateTime.UtcNow.AddHours(1));
+
+            AuctionEventArgs raisedArgs = null;
+            auctioneer.AuctionEnded += (sender, args) => raisedArgs = args;
 
             // Turn back the time
             auction.EndDateTimeUtc = DateTime.UtcNow;
