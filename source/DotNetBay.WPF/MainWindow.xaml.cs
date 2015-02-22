@@ -26,7 +26,7 @@ namespace DotNetBay.WPF
 
             var app = Application.Current as App;
 
-            app.AuctionRunner.Auctioneer.AuctionClosed += this.AuctioneerOnAuctionClosed;
+            app.AuctionRunner.Auctioneer.AuctionEnded += this.AuctioneerOnAuctionClosed;
             app.AuctionRunner.Auctioneer.BidAccepted += this.AuctioneerOnBidAccepted;
             app.AuctionRunner.Auctioneer.BidDeclined += this.AuctioneerOnBidDeclined;
 
