@@ -51,14 +51,14 @@
             <wpftk:DateTimePicker Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" Value="{Binding NewAuction.EndDateTimeUtc}"  Width="240"></wpftk:DateTimePicker>
             
             <TextBox IsReadOnly="True" Grid.Row="5" Grid.Column="1" Margin="0,0,36,0" Text="{Binding FilePathToImage}"></TextBox>
-            <Button Click="SelectImageButton_Click" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Width="30">...</Button>
+            <Button Click="SelectImageButtonClick" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Width="30">...</Button>
 
         </Grid>
         
 
         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Padding="5" Margin="5,5,0,5" IsDefault="True" HorizontalAlignment="Left" Click="AddAuction_Click">Add Auction</Button>
-            <Button Padding="5" Margin="5,5,0,5" HorizontalAlignment="Left" Click="CloseButton_Click">Cancel</Button>
+            <Button Padding="5" Margin="5,5,0,5" IsDefault="True" HorizontalAlignment="Left" Click="AddAuctionClick">Add Auction</Button>
+            <Button Padding="5" Margin="5,5,0,5" HorizontalAlignment="Left" Click="CloseButtonClick">Cancel</Button>
         </StackPanel>
 
 
