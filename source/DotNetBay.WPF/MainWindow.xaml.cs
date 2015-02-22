@@ -27,6 +27,7 @@ namespace DotNetBay.WPF
             var app = Application.Current as App;
 
             app.AuctionRunner.Auctioneer.AuctionEnded += this.AuctioneerOnAuctionClosed;
+            app.AuctionRunner.Auctioneer.AuctionStarted += this.AuctioneerOnAuctionStarted;
             app.AuctionRunner.Auctioneer.BidAccepted += this.AuctioneerOnBidAccepted;
             app.AuctionRunner.Auctioneer.BidDeclined += this.AuctioneerOnBidDeclined;
 
@@ -42,6 +43,12 @@ namespace DotNetBay.WPF
         }
 
         private void AuctioneerOnBidAccepted(object sender, ProcessedBidEventArgs processedBidEventArgs)
+        {
+            var allAuctionsFromService = this.auctionService.GetAll();
+            this.Auctions = new ObservableCollection<Auction>(allAuctionsFromService);
+        }
+
+        private void AuctioneerOnAuctionStarted(object sender, AuctionEventArgs auctionEventArgs)
         {
             var allAuctionsFromService = this.auctionService.GetAll();
             this.Auctions = new ObservableCollection<Auction>(allAuctionsFromService);
