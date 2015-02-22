@@ -43,6 +43,8 @@ namespace DotNetBay.WPF
 
             this.simpleMemberService = new SimpleMemberService(app.MainRepository);
             this.auctionService = new AuctionService(app.MainRepository, simpleMemberService);
+
+            this.YourBid = Math.Max(this.SelectedAuction.CurrentPrice, this.SelectedAuction.StartPrice);
         }
 
         private void PlaceBidAuction_Click(object sender, RoutedEventArgs e)

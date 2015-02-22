@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         
         
-        Title="BidView" Height="385" Width="567"  ResizeMode="NoResize">
+        Title="BidView" Height="485" Width="567"  ResizeMode="NoResize">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -26,6 +26,8 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -37,15 +39,19 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Row="0">Title</Label>
-            <Label Grid.Row="1">Description</Label>
-            <Label Grid.Row="2">Start Price</Label>
-            <Label Grid.Row="4" FontSize="16" FontWeight="Bold">Your Bid</Label>
+            <Label Grid.Row="2">Description</Label>
+            <Label Grid.Row="3">Start Price</Label>
+            <Label Grid.Row="4">Current Price</Label>
+            <Label Grid.Row="6" FontSize="16" FontWeight="Bold">Your Bid</Label>
 
+            
             <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedAuction.Title}"/>
-            <TextBlock TextWrapping="Wrap" Height="90" Grid.Row="1" Grid.Column="1" Text="{Binding SelectedAuction.Description}"/>
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding NewAuction.StartPrice}"/>
+            <Image Grid.Row="1" Grid.Column="1" Source="{Binding SelectedAuction.Image}" MaxHeight="150"></Image>
+            <TextBlock Grid.Row="2" TextWrapping="Wrap"  Grid.Column="1" Text="{Binding SelectedAuction.Description}"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedAuction.StartPrice}"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedAuction.CurrentPrice}"/>
 
-            <TextBox Grid.Row="4" Grid.Column="1" FontSize="16"  Text="{Binding YourBid}"></TextBox>
+            <TextBox Grid.Row="6" Grid.Column="1" FontSize="16"  Text="{Binding YourBid}"></TextBox>
             
         </Grid>
         
