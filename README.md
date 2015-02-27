@@ -1,6 +1,7 @@
 # dotnetbay - A .NET Auction Solution 
 Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
 Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
+Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/wpf?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/wpf)
 
 This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 ## WPF Solution
