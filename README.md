@@ -2,32 +2,18 @@
 Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
 Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
 
-A bootstrap solution to build your own basic auction portal
+This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
+## WPF Solution
+This is the WPF Branch, where a WPF-based client was implemented. See the Screenhots below.
 
-## Goals
-This is the starting point for various extensions to the core business library. The current storage implementation is done by serializing data to json-files. There is no graphical user interface, just a command line.
+### MainWindow
+![Main Window](assets/donetbaywpf-main.png)
 
-With focus on the .NET-Stack, at least the following technologies should be added to extend the base implementation.
+### Sell Dialog
+![Main Window](assets/donetbaywpf-sell.png)
 
-* WPF / XAML UI
-* EntityFramework
-* ASP.NET MVC 4 UI 
-* ASP.NET WebApi
-* ASP.Net SignalR
-
-## Contribution
-The following products / tools are needed to contribute / fork.
-
-**For Development**
-* MS Visual Studio (at least Community Version). [http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx](http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx "http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx")
-* ReSharper (optional). [https://www.jetbrains.com/student/](https://www.jetbrains.com/student/ "https://www.jetbrains.com/student/")
-* StyleCop 4.7 (optional). [http://stylecop.codeplex.com/releases/view/79972](http://stylecop.codeplex.com/releases/view/79972 "http://stylecop.codeplex.com/releases/view/79972") 
-
-
-**For Pleasure**
-* SourceTree [http://www.sourcetreeapp.com/](http://www.sourcetreeapp.com/ "http://www.sourcetreeapp.com/")
-* MarkdownPad [http://markdownpad.com/](http://markdownpad.com/ "http://markdownpad.com/")
-* NCrunch [http://www.ncrunch.net/](http://www.ncrunch.net/ http://www.ncrunch.net/)
+### Bid Dialog
+![Main Window](assets/donetbaywpf-bid.png)
 
 ## Authors
 * Michael Schnyder
