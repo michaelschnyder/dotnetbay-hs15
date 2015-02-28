@@ -22,7 +22,9 @@ namespace DotNetBay.WPF.ViewModel
 
         public RelayCommand<Window> CloseDialogCommand { get; set; }
 
-        public RelayCommand<Window> AddAuctionCommand { get; set; }
+        public RelayCommand<Window> AddAuctionAndCloseCommand { get; set; }
+
+        public RelayCommand SelectImageFileCommand { get; set; }
 
         public string Title { get; set; }
         public string Description { get; set; }
@@ -43,12 +45,16 @@ namespace DotNetBay.WPF.ViewModel
             this.memberService = new SimpleMemberService(app.MainRepository);
             this.auctionService = new AuctionService(app.MainRepository, this.memberService);
 
+            this.SelectImageFileCommand = new RelayCommand(this.SelectFolderAction);
+            this.CloseDialogCommand = new RelayCommand<Window>(this.CloseAction);
+            this.AddAuctionAndCloseCommand = new RelayCommand<Window>(this.AddActionAndClose);
+
             // Default Values
             this.StartDateTimeUtc = DateTime.UtcNow.AddMinutes(1);
             this.EndDateTimeUtc = DateTime.UtcNow.AddDays(7);
         }
 
-        private void AddAction()
+        private void AddActionAndClose(Window window)
         {
             var newAuction = new Auction()
             {
@@ -62,6 +68,8 @@ namespace DotNetBay.WPF.ViewModel
             };
 
             this.auctionService.Save(newAuction);
+
+            window.Close();
         }
 
         private void SelectFolderAction()
@@ -78,9 +86,9 @@ namespace DotNetBay.WPF.ViewModel
             }
         }
 
-        private void CloseAction()
+        private void CloseAction(Window window)
         {
-
+            window.Close();
         }
     }
 }

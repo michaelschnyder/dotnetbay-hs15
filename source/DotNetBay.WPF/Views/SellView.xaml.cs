@@ -6,6 +6,7 @@ using System.Windows;
 
 using DotNetBay.Core;
 using DotNetBay.Model;
+using DotNetBay.WPF.ViewModel;
 
 using Microsoft.Win32;
 
@@ -34,6 +35,9 @@ namespace DotNetBay.WPF.Views
         {
             this.InitializeComponent();
 
+            this.DataContext = new SellViewModel();
+
+            /*
             this.DataContext = this;
 
             var app = Application.Current as App;
@@ -47,6 +51,7 @@ namespace DotNetBay.WPF.Views
                                       StartDateTimeUtc = DateTime.UtcNow,
                                       EndDateTimeUtc = DateTime.UtcNow.AddDays(7)
                                   };
+            */
         }
 
         private void AddAuctionClick(object sender, RoutedEventArgs e)
