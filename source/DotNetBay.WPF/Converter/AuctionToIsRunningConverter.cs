@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 using DotNetBay.Model;
 
-namespace DotNetBay.WPF
+namespace DotNetBay.WPF.Converter
 {
     public class AuctionToIsRunningConverter: IValueConverter
     {

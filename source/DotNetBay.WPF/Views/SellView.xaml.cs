@@ -9,7 +9,7 @@ using DotNetBay.Model;
 
 using Microsoft.Win32;
 
-namespace DotNetBay.WPF
+namespace DotNetBay.WPF.Views
 {
     /// <summary>
     /// Interaction logic for SellView.xaml
@@ -24,7 +24,7 @@ namespace DotNetBay.WPF
         {
             get
             {
-                return newAuction;
+                return this.newAuction;
             }
         }
 

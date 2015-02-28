@@ -1,17 +1,18 @@
-﻿<Window x:Class="DotNetBay.WPF.MainWindow"
+﻿<Window x:Class="DotNetBay.WPF.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DotNetBay.WPF"
+        xmlns:local="clr-namespace:DotNetBay.WPF.Views"
+        xmlns:converter="clr-namespace:DotNetBay.WPF.Converter"
         d:DataContext="{d:DesignInstance Type=local:MainWindow}"
         mc:Ignorable="d"
         Title="MainWindow" Height="538" Width="1029">
 
     <Window.Resources>
-        <local:IsClosedToStatusTextConverter x:Key="IsClosedToStatusTextConverter"></local:IsClosedToStatusTextConverter>
-        <local:AuctionToIsRunningConverter x:Key="AuctionToIsRunningConverter"></local:AuctionToIsRunningConverter>
+        <converter:IsClosedToStatusTextConverter x:Key="IsClosedToStatusTextConverter"></converter:IsClosedToStatusTextConverter>
+        <converter:AuctionToIsRunningConverter x:Key="AuctionToIsRunningConverter"></converter:AuctionToIsRunningConverter>
     </Window.Resources>
 
     <Grid Margin="10">

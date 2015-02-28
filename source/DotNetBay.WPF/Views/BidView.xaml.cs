@@ -1,15 +1,10 @@
 ﻿using System;
-using System.ComponentModel;
-using System.IO;
-using System.Runtime.CompilerServices;
 using System.Windows;
 
 using DotNetBay.Core;
 using DotNetBay.Model;
 
-using Microsoft.Win32;
-
-namespace DotNetBay.WPF
+namespace DotNetBay.WPF.Views
 {
     /// <summary>
     /// Interaction logic for SellView.xaml
@@ -42,7 +37,7 @@ namespace DotNetBay.WPF
             var app = Application.Current as App;
 
             this.simpleMemberService = new SimpleMemberService(app.MainRepository);
-            this.auctionService = new AuctionService(app.MainRepository, simpleMemberService);
+            this.auctionService = new AuctionService(app.MainRepository, this.simpleMemberService);
 
             this.YourBid = Math.Max(this.SelectedAuction.CurrentPrice, this.SelectedAuction.StartPrice);
         }

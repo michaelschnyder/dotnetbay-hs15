@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace DotNetBay.WPF
+namespace DotNetBay.WPF.Converter
 {
     public class IsClosedToStatusTextConverter : IValueConverter
     {

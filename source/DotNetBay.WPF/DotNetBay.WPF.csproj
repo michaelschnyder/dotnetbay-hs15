@@ -73,13 +73,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BidView.xaml.cs">
+    <Compile Include="Views\BidView.xaml.cs">
       <DependentUpon>BidView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SellView.xaml.cs">
+    <Compile Include="Views\SellView.xaml.cs">
       <DependentUpon>SellView.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -87,17 +87,17 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AuctionToIsRunningConverter.cs" />
-    <Compile Include="IsClosedToStatusConverter.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Converter\AuctionToIsRunningConverter.cs" />
+    <Compile Include="Converter\IsClosedToStatusConverter.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="BidView.xaml">
+    <Page Include="Views\BidView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SellView.xaml">
+    <Page Include="Views\SellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,6 +152,9 @@
       <Project>{9dfa662d-5cf3-43e6-88e1-61d4d1fe02ad}</Project>
       <Name>DotNetBay.Test</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

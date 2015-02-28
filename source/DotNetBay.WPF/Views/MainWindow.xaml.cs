@@ -7,7 +7,7 @@ using DotNetBay.Core;
 using DotNetBay.Core.Execution;
 using DotNetBay.Model;
 
-namespace DotNetBay.WPF
+namespace DotNetBay.WPF.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
