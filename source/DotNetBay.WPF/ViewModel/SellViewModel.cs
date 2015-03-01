@@ -14,36 +14,16 @@ namespace DotNetBay.WPF.ViewModel
 {
     public class SellViewModel : ViewModelBase
     {
-        private readonly SimpleMemberService memberService;
+        private readonly IMemberService memberService;
 
-        private AuctionService auctionService;
+        private readonly IAuctionService auctionService;
 
         private string filePathToImage;
 
-        public RelayCommand<Window> CloseDialogCommand { get; set; }
-
-        public RelayCommand<Window> AddAuctionAndCloseCommand { get; set; }
-
-        public RelayCommand SelectImageFileCommand { get; set; }
-
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public long StartPrice { get; set; }
-        public DateTime StartDateTimeUtc { get; set; }
-        public DateTime EndDateTimeUtc { get; set; }
-
-        public string FilePathToImage
+        public SellViewModel(IMemberService memberService, IAuctionService auctionService)
         {
-            get { return this.filePathToImage; }
-            set { this.Set(() => this.FilePathToImage, ref this.filePathToImage, value); }
-        }
-
-        public SellViewModel()
-        {
-            var app = Application.Current as App;
-
-            this.memberService = new SimpleMemberService(app.MainRepository);
-            this.auctionService = new AuctionService(app.MainRepository, this.memberService);
+            this.memberService = memberService;
+            this.auctionService = auctionService;
 
             this.SelectImageFileCommand = new RelayCommand(this.SelectFolderAction);
             this.CloseDialogCommand = new RelayCommand<Window>(this.CloseAction);
@@ -54,6 +34,29 @@ namespace DotNetBay.WPF.ViewModel
             this.EndDateTimeUtc = DateTime.UtcNow.AddDays(7);
         }
 
+        public RelayCommand<Window> CloseDialogCommand { get; set; }
+
+        public RelayCommand<Window> AddAuctionAndCloseCommand { get; set; }
+
+        public RelayCommand SelectImageFileCommand { get; set; }
+
+        public string Title { get; set; }
+        
+        public string Description { get; set; }
+        
+        public long StartPrice { get; set; }
+        
+        public DateTime StartDateTimeUtc { get; set; }
+        
+        public DateTime EndDateTimeUtc { get; set; }
+
+        public string FilePathToImage
+        {
+            get { return this.filePathToImage; }
+            set { this.Set(() => this.FilePathToImage, ref this.filePathToImage, value); }
+        }
+
+
         private void AddActionAndClose(Window window)
         {
             var newAuction = new Auction()
@@ -63,9 +66,13 @@ namespace DotNetBay.WPF.ViewModel
                 StartPrice = this.StartPrice,
                 StartDateTimeUtc = this.StartDateTimeUtc,
                 EndDateTimeUtc = this.EndDateTimeUtc,
-                Image = File.ReadAllBytes(this.FilePathToImage),
                 Seller = this.memberService.GetCurrentMember(),
             };
+
+            if (!string.IsNullOrEmpty(this.FilePathToImage))
+            {
+                newAuction.Image = File.ReadAllBytes(this.FilePathToImage);
+            }
 
             this.auctionService.Save(newAuction);
 
