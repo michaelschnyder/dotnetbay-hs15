@@ -1,10 +1,11 @@
 # dotnetbay - A .NET Auction Solution 
 Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
 Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
+Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/mvvm?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/mvvm)
 
 This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
-## WPF Solution
-This is the WPF Branch, where a WPF-based client was implemented. See the Screenhots below.
+## MVVM Solution
+This is the MVVM Branch, based on the [WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf). The source was refactored to the MVVM-Pattern.
 
 ### MainWindow
 ![Main Window](assets/donetbaywpf-main.png)
