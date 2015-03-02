@@ -41,7 +41,6 @@ namespace DotNetBay.WPF
                         });
             }
         
-
             this.AuctionRunner = new AuctionRunner(this.MainRepository);
             this.AuctionRunner.Start();
         }
