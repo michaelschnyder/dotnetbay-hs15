@@ -1,12 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Windows;
+using System.Windows.Input;
 
 using DotNetBay.Core;
 using DotNetBay.Model;
-
-using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
+using DotNetBay.WPF.ViewModel.Common;
 
 using Microsoft.Win32;
 
@@ -34,11 +33,11 @@ namespace DotNetBay.WPF.ViewModel
             this.EndDateTimeUtc = DateTime.UtcNow.AddDays(7);
         }
 
-        public RelayCommand<Window> CloseDialogCommand { get; set; }
+        public ICommand CloseDialogCommand { get; set; }
 
-        public RelayCommand<Window> AddAuctionAndCloseCommand { get; set; }
+        public ICommand AddAuctionAndCloseCommand { get; set; }
 
-        public RelayCommand SelectImageFileCommand { get; set; }
+        public ICommand SelectImageFileCommand { get; set; }
 
         public string Title { get; set; }
         
@@ -55,7 +54,6 @@ namespace DotNetBay.WPF.ViewModel
             get { return this.filePathToImage; }
             set { this.Set(() => this.FilePathToImage, ref this.filePathToImage, value); }
         }
-
 
         private void AddActionAndClose(Window window)
         {
