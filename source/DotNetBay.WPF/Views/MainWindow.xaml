@@ -4,9 +4,9 @@
         
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DotNetBay.WPF.Views"
+        xmlns:vm="clr-namespace:DotNetBay.WPF.ViewModel"
         xmlns:converter="clr-namespace:DotNetBay.WPF.Converter"
-        d:DataContext="{d:DesignInstance Type=local:MainWindow}"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="538" Width="1029">
 
@@ -23,12 +23,11 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Padding="5" Margin="0,5,5,5"  HorizontalAlignment="Left" Click="AddNewAuctionButtonClick">New Auction</Button>
+            <Button Padding="5" Margin="0,5,5,5"  HorizontalAlignment="Left" Command="{Binding AddNewAuctionCommand}">New Auction</Button>
         </StackPanel>
 
         <DataGrid Name="AuctionsDataGrid" Grid.Row="2" ItemsSource="{Binding Auctions}" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
-
                 <DataGridTemplateColumn Header="Auction">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -40,22 +39,22 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTextColumn Binding="{Binding IsClosed, Converter={StaticResource IsClosedToStatusTextConverter}}" Header="Status"/>
+                <DataGridTextColumn Binding="{Binding Status, Converter={StaticResource IsClosedToStatusTextConverter}}" Header="Status"/>
 
                 <DataGridTextColumn Binding="{Binding StartPrice, StringFormat=\{0:C\}}" Header="Start Price"/>
                 <DataGridTextColumn Binding="{Binding CurrentPrice, StringFormat=\{0:C\}}" Header="Current Price"/>
-                <DataGridTextColumn Binding="{Binding Bids.Count}" Header="Bids"/>
-                <DataGridTextColumn Binding="{Binding StartDateTimeUtc, StringFormat=dd.MM.yyy HH:mm:ss}" Header="Starts"/>
-                <DataGridTextColumn Binding="{Binding EndDateTimeUtc, StringFormat=dd.MM.yyy HH:mm:ss}" Header="Ends" />
-                <DataGridTextColumn Binding="{Binding Seller.DisplayName}" Header="Seller" />
-                <DataGridTextColumn Binding="{Binding ActiveBid.Bidder.DisplayName}" Header="Current Winner"/>
-                <DataGridTextColumn Binding="{Binding CloseDateTimeUtc, StringFormat=dd.MM.yyy HH:mm:ss}" Header="Closed" />
-                <DataGridTextColumn Binding="{Binding Winner.DisplayName}" Header="Winner"/>
+                <DataGridTextColumn Binding="{Binding BidCount}" Header="Bids"/>
+                <DataGridTextColumn Binding="{Binding StartDateTimeLocal, StringFormat=dd.MM.yyy HH:mm:ss}" Header="Starts"/>
+                <DataGridTextColumn Binding="{Binding EndDateTimeLocal, StringFormat=dd.MM.yyy HH:mm:ss}" Header="Ends" />
+                <DataGridTextColumn Binding="{Binding Seller}" Header="Seller" />
+                <DataGridTextColumn Binding="{Binding CurrentWinner}" Header="Current Winner"/>
+                <DataGridTextColumn Binding="{Binding ClosedDateLocal, StringFormat=dd.MM.yyy HH:mm:ss}" Header="Closed" />
+                <DataGridTextColumn Binding="{Binding FinalWinner}" Header="Winner"/>
 
                 <DataGridTemplateColumn Header="Place Bid">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Background="Green" Click="PlaceBidButtonClick" Visibility="{Binding IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}">Place</Button>
+                            <Button Background="Green" Command="{Binding AddBidCommand}" Visibility="{Binding IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}">Place</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

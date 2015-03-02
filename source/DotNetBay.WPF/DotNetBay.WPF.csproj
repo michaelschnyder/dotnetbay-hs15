@@ -73,8 +73,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\AuctionViewModel.cs" />
     <Compile Include="ViewModel\BidViewModel.cs" />
     <Compile Include="ViewModel\Common\RelayCommand.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\SellViewModel.cs" />
     <Compile Include="ViewModel\Common\ViewModelBase.cs" />
     <Compile Include="Views\BidView.xaml.cs">
