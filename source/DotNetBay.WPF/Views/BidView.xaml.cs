@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 using DotNetBay.Core;
 using DotNetBay.Model;
+using DotNetBay.WPF.ViewModel;
 
 namespace DotNetBay.WPF.Views
 {
@@ -11,47 +11,16 @@ namespace DotNetBay.WPF.Views
     /// </summary>
     public partial class BidView : Window
     {
-        private readonly Auction selectedAuction;
-
-        private readonly AuctionService auctionService;
-
-        private SimpleMemberService simpleMemberService;
-
-        public double YourBid { get; set; }
-
-        public Auction SelectedAuction
-        {
-            get
-            {
-                return this.selectedAuction;
-            }
-        }
-
         public BidView(Auction selectedAuction)
         {
-            this.selectedAuction = selectedAuction;
             this.InitializeComponent();
-
-            this.DataContext = this;
 
             var app = Application.Current as App;
 
-            this.simpleMemberService = new SimpleMemberService(app.MainRepository);
-            this.auctionService = new AuctionService(app.MainRepository, this.simpleMemberService);
+            var memberService = new SimpleMemberService(app.MainRepository);
+            var auctionService = new AuctionService(app.MainRepository, memberService);
 
-            this.YourBid = Math.Max(this.SelectedAuction.CurrentPrice, this.SelectedAuction.StartPrice);
-        }
-
-        private void PlaceBidAuction_Click(object sender, RoutedEventArgs e)
-        {
-            this.auctionService.PlaceBid(this.simpleMemberService.GetCurrentMember(), this.SelectedAuction, this.YourBid);
-
-            this.Close();
-        }
-
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            this.DataContext = new BidViewModel(selectedAuction, memberService, auctionService);
         }
     }
 }
