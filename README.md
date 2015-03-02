@@ -9,7 +9,7 @@ This is the starting point for various extensions to the core business library. 
 
 With focus on the .NET-Stack, at least the following technologies should be added to extend the base implementation.
 
-* WPF / XAML UI
+* WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf))
 * EntityFramework
 * ASP.NET MVC 4 UI 
 * ASP.NET WebApi
