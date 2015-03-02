@@ -85,20 +85,19 @@ namespace DotNetBay.WPF.ViewModel.Common
 
             this.RaisePropertyChanging(propertyExpression);
             
-            var oldValue = field;
             field = newValue;
             
-            this.RaisePropertyChanged(propertyExpression, oldValue, field);
+            this.RaisePropertyChanged(propertyExpression);
             return true;
         }
 
-        private void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpression, object oldValue, object field)
+        protected void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpression)
         {
             var propertyName = GetPropertyName(propertyExpression);
             this.OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
 
-        private void RaisePropertyChanging<T>(Expression<Func<T>> propertyExpression)
+        protected void RaisePropertyChanging<T>(Expression<Func<T>> propertyExpression)
         {
             var propertyName = GetPropertyName(propertyExpression);
             this.OnPropertyChanging(new PropertyChangingEventArgs(propertyName));
