@@ -12,7 +12,6 @@
 
     <Window.Resources>
         <converter:IsClosedToStatusTextConverter x:Key="IsClosedToStatusTextConverter"></converter:IsClosedToStatusTextConverter>
-        <converter:AuctionToIsRunningConverter x:Key="AuctionToIsRunningConverter"></converter:AuctionToIsRunningConverter>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
     </Window.Resources>
 
