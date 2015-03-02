@@ -35,9 +35,9 @@ namespace DotNetBay.WPF.ViewModel
 
         public ICommand CloseDialogCommand { get; set; }
 
-        public ICommand AddAuctionAndCloseCommand { get; set; }
+        public ICommand AddAuctionAndCloseCommand { get; private set; }
 
-        public ICommand SelectImageFileCommand { get; set; }
+        public ICommand SelectImageFileCommand { get; private set; }
 
         public string Title { get; set; }
         

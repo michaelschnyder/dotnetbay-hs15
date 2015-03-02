@@ -29,9 +29,9 @@ namespace DotNetBay.WPF.ViewModel
             this.YourBid = Math.Max(this.selectedAuction.CurrentPrice, this.selectedAuction.StartPrice);
         }
 
-        public ICommand CloseDialogCommand { get; set; }
+        public ICommand CloseDialogCommand { get; private set; }
 
-        public ICommand AddBidAndCloseCommand { get; set; }
+        public ICommand AddBidAndCloseCommand { get; private set; }
 
         public double YourBid { get; set; }
 
