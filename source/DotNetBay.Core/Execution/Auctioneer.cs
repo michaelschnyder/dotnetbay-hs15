@@ -80,7 +80,7 @@ namespace DotNetBay.Core.Execution
         private void StartPendingAuctions()
         {
             // Process all auctions which should be closed
-            var auctionsToStart = this.repository.GetAuctions().Where(a => !a.IsRunning && a.StartDateTimeUtc < DateTime.UtcNow).ToList();
+            var auctionsToStart = this.repository.GetAuctions().Where(a => !a.IsRunning && a.StartDateTimeUtc < DateTime.UtcNow && a.EndDateTimeUtc > DateTime.UtcNow).ToList();
 
             foreach (var auction in auctionsToStart)
             {
@@ -148,11 +148,18 @@ namespace DotNetBay.Core.Execution
                 auction.IsClosed = true;
                 auction.CloseDateTimeUtc = DateTime.UtcNow;
 
-                this.repository.SaveChanges();
-
-                this.OnAuctionEnded(
-                    new AuctionEventArgs() { Auction = auction, IsSuccessful = auction.Winner != null });
+                this.OnAuctionEnded(new AuctionEventArgs() { Auction = auction, IsSuccessful = auction.Winner != null });
             }
+
+            // Sync IsRunning from IsClosed
+            var auctionsToSync = this.repository.GetAuctions().Where(a => a.IsClosed && a.IsRunning).ToList();
+
+            foreach (var auction in auctionsToSync)
+            {
+                auction.IsRunning = false;
+            }
+
+            this.repository.SaveChanges();
         }
 
         #endregion
