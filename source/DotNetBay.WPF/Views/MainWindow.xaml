@@ -13,6 +13,7 @@
     <Window.Resources>
         <converter:IsClosedToStatusTextConverter x:Key="IsClosedToStatusTextConverter"></converter:IsClosedToStatusTextConverter>
         <converter:AuctionToIsRunningConverter x:Key="AuctionToIsRunningConverter"></converter:AuctionToIsRunningConverter>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
     </Window.Resources>
 
     <Grid Margin="10">
@@ -55,7 +56,7 @@
                 <DataGridTemplateColumn Header="Place Bid">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Background="Green" Click="PlaceBidButtonClick" Visibility="{Binding ., Converter={StaticResource AuctionToIsRunningConverter}}">Place</Button>
+                            <Button Background="Green" Click="PlaceBidButtonClick" Visibility="{Binding IsRunning, Converter={StaticResource BooleanToVisibilityConverter}}">Place</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
