@@ -7,7 +7,7 @@ namespace DotNetBay.Data.EF
 {
     public class MainDbContext : DbContext
     {
-        public MainDbContext() : base("Dnead.AuctionDb-Migrations")
+        public MainDbContext() : this("Dnead.AuctionDb-Migrations")
         {
             // You shouldn't use this constructor in your code! This one is only to create and test migrations!
             Debugger.Break();
@@ -15,6 +15,8 @@ namespace DotNetBay.Data.EF
 
         public MainDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
         {
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public DbSet<Auction> Auctions { get; set; }
