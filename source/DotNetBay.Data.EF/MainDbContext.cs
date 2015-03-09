@@ -10,7 +10,7 @@ namespace DotNetBay.Data.EF
         public MainDbContext() : this("Dnead.AuctionDb-Migrations")
         {
             // You shouldn't use this constructor in your code! This one is only to create and test migrations!
-            Debugger.Break();
+            // Debugger.Break();
         }
 
         public MainDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
