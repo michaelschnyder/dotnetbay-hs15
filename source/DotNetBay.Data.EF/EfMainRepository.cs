@@ -11,9 +11,9 @@ namespace DotNetBay.Data.EF
     {
         private MainDbContext context;
 
-        public EFMainRepository()
+        public EFMainRepository(string nameOrConnectionString)
         {
-            this.context = new MainDbContext();
+            this.context = new MainDbContext(nameOrConnectionString);
         }
 
         public Database Database

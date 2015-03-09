@@ -6,13 +6,26 @@ namespace DotNetBay.Data.EF
 {
     public class MainDbContext : DbContext
     {
+        public MainDbContext() : base("Dnead.AuctionDb-Migrations")
+        {
+            // You shouln't use this constructor in your code! This one is only to create and test migrations!
+            Debugger.Break();
+        }
+
+        public MainDbContext(string nameOrConnectionString) : base(nameOrConnectionString)
+        {
+        }
+
         public DbSet<Auction> Auctions { get; set; }
+        
         public DbSet<Member> Members { get; set; }
+        
         public DbSet<Bid> Bids { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.Conventions.Add(new DateTime2Convention());
 
             modelBuilder.Entity<Auction>().HasMany(a => a.Bids).WithRequired(b => b.Auction);
