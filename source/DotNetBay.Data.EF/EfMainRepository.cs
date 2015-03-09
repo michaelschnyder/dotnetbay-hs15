@@ -9,7 +9,7 @@ namespace DotNetBay.Data.EF
 {
     public class EFMainRepository : IMainRepository
     {
-        private MainDbContext context;
+        private readonly MainDbContext context;
 
         public EFMainRepository(string nameOrConnectionString)
         {

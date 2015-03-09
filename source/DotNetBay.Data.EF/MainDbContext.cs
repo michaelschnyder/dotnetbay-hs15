@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Diagnostics;
 
 using DotNetBay.Model;
 
@@ -28,11 +29,7 @@ namespace DotNetBay.Data.EF
 
             modelBuilder.Conventions.Add(new DateTime2Convention());
 
-            modelBuilder.Entity<Auction>().HasMany(a => a.Bids).WithRequired(b => b.Auction);
             modelBuilder.Entity<Auction>().HasRequired(a => a.Seller).WithMany(member => member.Auctions);
-
-            modelBuilder.Entity<Member>().HasKey(m => m.Id);
-            modelBuilder.Entity<Member>().HasKey(m => m.UniqueId);
         }
     }
 }
