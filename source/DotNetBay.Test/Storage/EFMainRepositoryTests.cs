@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 using DotNetBay.Data.EF;
 using DotNetBay.Interfaces;
@@ -31,7 +32,7 @@ namespace DotNetBay.Test.Storage
         {
             foreach (var repo in this.repos)
             {
-                
+                repo.Database.Delete();
             }
         }
 
