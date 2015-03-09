@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Linq;
 
 using DotNetBay.Data.EF;
 using DotNetBay.Interfaces;
-
-using NUnit.Framework;
 
 namespace DotNetBay.Test.Storage
 {
@@ -38,7 +36,13 @@ namespace DotNetBay.Test.Storage
 
         public IMainRepository CreateMainRepository()
         {
-            var repo = new EFMainRepository();
+            var repo = new EFMainRepository("Dnead.AuctionDb-UnitTests");
+
+            if (!this.repos.Any())
+            {
+                repo.Database.Delete();
+            }
+            
             this.repos.Add(repo);
 
             return repo;
