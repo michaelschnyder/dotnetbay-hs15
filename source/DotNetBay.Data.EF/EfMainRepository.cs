@@ -17,12 +17,12 @@ namespace DotNetBay.Data.EF
 
         public IQueryable<Auction> GetAuctions()
         {
-            return this.context.Auctions;
+            return this.context.Auctions.Include(a => a.Bids);
         }
 
         public IQueryable<Member> GetMembers()
         {
-            return this.context.Members;
+            return this.context.Members.Include(m => m.Auctions);
         }
 
         public Bid GetBidByTransactionId(Guid transactionId)
