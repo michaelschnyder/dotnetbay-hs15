@@ -11,11 +11,17 @@ namespace DotNetBay.Data.EF
     {
         private MainDbContext context;
 
-        public Database Database { get { return this.context.Database; } }
-
         public EFMainRepository()
         {
             this.context = new MainDbContext();
+        }
+
+        public Database Database
+        {
+            get
+            {
+                return this.context.Database;
+            }
         }
 
         public IQueryable<Auction> GetAuctions()
