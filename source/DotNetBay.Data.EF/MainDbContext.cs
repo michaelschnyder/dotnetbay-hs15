@@ -9,7 +9,7 @@ namespace DotNetBay.Data.EF
     {
         public MainDbContext() : base("Dnead.AuctionDb-Migrations")
         {
-            // You shouln't use this constructor in your code! This one is only to create and test migrations!
+            // You shouldn't use this constructor in your code! This one is only to create and test migrations!
             Debugger.Break();
         }
 
