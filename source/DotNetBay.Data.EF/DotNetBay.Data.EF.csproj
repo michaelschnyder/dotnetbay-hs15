@@ -49,6 +49,7 @@
     <Compile Include="DateTime2Convention.cs" />
     <Compile Include="MainDbContext.cs" />
     <Compile Include="EfMainRepository.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
