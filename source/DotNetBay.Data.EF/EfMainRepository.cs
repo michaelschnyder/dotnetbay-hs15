@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 
 using DotNetBay.Interfaces;
@@ -9,6 +10,8 @@ namespace DotNetBay.Data.EF
     public class EFMainRepository : IMainRepository
     {
         private MainDbContext context;
+
+        public Database Database { get { return this.context.Database; } }
 
         public EFMainRepository()
         {
