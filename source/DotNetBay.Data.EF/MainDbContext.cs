@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity;
-using System.Diagnostics;
 
 using DotNetBay.Model;
 
