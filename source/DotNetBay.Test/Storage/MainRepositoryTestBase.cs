@@ -73,7 +73,7 @@ namespace DotNetBay.Test.Storage
 
             Assert.IsNotNull(memberFromRepo, "memberForRepo != null");
             Assert.IsNotNull(memberFromRepo.Auctions, "memberForRepo.Auctions != null");
-            Assert.AreEqual(1, memberFromRepo.Auctions.Count, "There should be exact one euction for this member");
+            Assert.AreEqual(1, memberFromRepo.Auctions.Count, "There should be exact one auction for this member");
 
             Assert.AreEqual(myAuction.Title, auctionFromRepo.Title, "Auction's title is not the same");
             Assert.AreEqual(myMember.UniqueId, memberFromRepo.UniqueId, "Member's uniqueId is not the same");
@@ -120,8 +120,8 @@ namespace DotNetBay.Test.Storage
             var myMember = CreateAMember();
             var myAuction = CreateAnAuction();
 
-            IQueryable<Member> allMembersFromRepo;
-            IQueryable<Auction> allAuctionsFromRepo;
+            List<Member> allMembersFromRepo;
+            List<Auction> allAuctionsFromRepo;
 
             using (var factory = this.CreateFactory())
             {
@@ -137,8 +137,8 @@ namespace DotNetBay.Test.Storage
                 secondRepo.SaveChanges();
 
                 var testRepo = factory.CreateMainRepository();
-                allAuctionsFromRepo = testRepo.GetAuctions();
-                allMembersFromRepo = testRepo.GetMembers();
+                allAuctionsFromRepo = testRepo.GetAuctions().ToList();
+                allMembersFromRepo = testRepo.GetMembers().ToList();
             }
 
             Assert.AreEqual(1, allAuctionsFromRepo.Count(), "There should be exact 1 auction");
@@ -177,6 +177,7 @@ namespace DotNetBay.Test.Storage
                 testRepo.Add(myAuction);
                 testRepo.Add(theBidder);
                 testRepo.Add(bid);
+                testRepo.SaveChanges();
 
                 allAuctionsFromRepo = testRepo.GetAuctions().ToList();
             }
@@ -199,6 +200,7 @@ namespace DotNetBay.Test.Storage
             myAuction.Seller = theSeller;
 
             var theBidder = CreateAMember();
+
             var bid = new Bid()
             {
                 Auction = myAuction,
@@ -215,16 +217,21 @@ namespace DotNetBay.Test.Storage
                 testRepo.Add(myAuction);
                 testRepo.Add(theBidder);
                 testRepo.Add(bid);
-
+                testRepo.SaveChanges();
+                
                 allMembersFromRepo = testRepo.GetMembers().ToList();
             }
 
             // Sanity check
             Assert.AreEqual(2, allMembersFromRepo.Count());
-            Assert.IsNotNull(allMembersFromRepo[1].Bids);
 
-            Assert.AreEqual(1, allMembersFromRepo[1].Bids.Count);
-            Assert.AreEqual(bid, allMembersFromRepo[1].Bids[0]);
+            // Take the bidder to test
+            var bidderMember = allMembersFromRepo.FirstOrDefault(b => b.UniqueId == theBidder.UniqueId);
+            Assert.IsNotNull(bidderMember);
+            Assert.IsNotNull(bidderMember.Bids);
+
+            Assert.AreEqual(1, bidderMember.Bids.Count);
+            Assert.AreEqual(bid, bidderMember.Bids[0]);
         }
 
         [TestCase]
@@ -252,6 +259,7 @@ namespace DotNetBay.Test.Storage
                 testRepo.Add(theBidder);
                 testRepo.Add(myAuction);
                 testRepo.Add(bid);
+                testRepo.SaveChanges();
 
                 retrievedBid = testRepo.GetBidByTransactionId(bid.TransactionId);
             }
@@ -261,8 +269,7 @@ namespace DotNetBay.Test.Storage
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentException))]
-        public void GivenARepoWithMember_AddMemberAgain_ShouldRaiseExecption()
+        public void GivenARepoWithMember_AddMemberAgain_ShouldNotAddTwice()
         {
             var myAuction = CreateAnAuction();
             var myMember = CreateAMember();
@@ -270,18 +277,26 @@ namespace DotNetBay.Test.Storage
             // References
             myAuction.Seller = myMember;
             myMember.Auctions = new List<Auction>(new[] { myAuction });
+
+            List<Member> allMembers;
 
             using (var factory = this.CreateFactory())
             {
                 var firstRepo = factory.CreateMainRepository();
                 firstRepo.Add(myMember);
                 firstRepo.Add(myMember);
+
+                firstRepo.SaveChanges();
+
+                allMembers = firstRepo.GetMembers().ToList();
             }
+
+            Assert.NotNull(allMembers);
+            Assert.AreEqual(1, allMembers.Count(), "There should be only one member");
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentException))]
-        public void GivenARepoWithAuction_AddAuctionAgain_ShouldRaiseExecption()
+        public void GivenARepoWithAuction_AddAuctionAgain_ShouldNotAddTwice()
         {
             var myAuction = CreateAnAuction();
             var myMember = CreateAMember();
@@ -290,34 +305,20 @@ namespace DotNetBay.Test.Storage
             myAuction.Seller = myMember;
             myMember.Auctions = new List<Auction>(new[] { myAuction });
 
+            List<Auction> allAuctions;
+
             using (var factory = this.CreateFactory())
             {
                 var testRepo = factory.CreateMainRepository();
                 testRepo.Add(myAuction);
                 testRepo.Add(myAuction);
+
+                testRepo.SaveChanges();
+                allAuctions = testRepo.GetAuctions().ToList();
             }
-        }
 
-        [TestCase]
-        [ExpectedException(typeof(Exception))]
-        public void GivenEmptyRepo_AddAuctionAndMemberFromOtherInstance_ShouldRaiseException()
-        {
-            var myAuction = CreateAnAuction();
-            var myMember = CreateAMember();
-
-            // References
-            myAuction.Seller = myMember;
-            myMember.Auctions = new List<Auction>(new[] { myAuction });
-
-            using (var factory = this.CreateFactory())
-            {
-                var initRepo = factory.CreateMainRepository();
-                initRepo.Add(myAuction);
-                initRepo.SaveChanges();
-
-                var testRepo = factory.CreateMainRepository();
-                testRepo.Add(myAuction);
-            }
+            Assert.NotNull(allAuctions);
+            Assert.AreEqual(1, allAuctions.Count(), "There should be only one auction");
         }
 
         [TestCase]
@@ -355,8 +356,8 @@ namespace DotNetBay.Test.Storage
             myAuction.Seller = myMember;
             myMember.Auctions = new List<Auction>(new[] { myAuction });
 
-            IQueryable<Member> allMembersFromRepo;
-            IQueryable<Auction> allAuctionFromRepo;
+            List<Member> allMembersFromRepo;
+            List<Auction> allAuctionFromRepo;
 
             using (var factory = this.CreateFactory())
             {
@@ -365,8 +366,8 @@ namespace DotNetBay.Test.Storage
                 initRepo.SaveChanges();
 
                 var testRepo = factory.CreateMainRepository();
-                allAuctionFromRepo = testRepo.GetAuctions();
-                allMembersFromRepo = testRepo.GetMembers();
+                allAuctionFromRepo = testRepo.GetAuctions().ToList();
+                allMembersFromRepo = testRepo.GetMembers().ToList();
             }
 
             Assert.AreEqual(1, allAuctionFromRepo.Count(), "There should be exact 1 auction");
@@ -432,11 +433,9 @@ namespace DotNetBay.Test.Storage
             Assert.IsNull(imageFromRepo);
         }
 
-        protected abstract IRepositoryFactory CreateFactory();
-
         #region Create Helpers
 
-        private static Auction CreateAnAuction()
+        protected static Auction CreateAnAuction()
         {
             return new Auction()
             {
@@ -446,7 +445,7 @@ namespace DotNetBay.Test.Storage
             };
         }
 
-        private static Member CreateAMember()
+        protected static Member CreateAMember()
         {
             return new Member()
             {
@@ -456,5 +455,7 @@ namespace DotNetBay.Test.Storage
         }
 
         #endregion
+
+        protected abstract IRepositoryFactory CreateFactory();
     }
 }
