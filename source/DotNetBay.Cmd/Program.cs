@@ -23,8 +23,8 @@ namespace DotNetBay.Cmd
 
             Console.WriteLine("DotNetBay Commandline");
 
-            var store = new EFMainRepository("Dnead.AuctionDb-Local");
-            
+            var store = new EFMainRepository();
+
             var auctionService = new AuctionService(store, new SimpleMemberService(store));
             var auctionRunner = new AuctionRunner(store);
             
