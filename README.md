@@ -1,19 +1,12 @@
 # dotnetbay - A .NET Auction Solution 
 Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
 Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
+Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/ef?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/ef)
 
-A bootstrap solution to build your own basic auction portal
+This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
-## Goals
-This is the starting point for various extensions to the core business library. The current storage implementation is done by serializing data to json-files. There is no graphical user interface, just a command line.
-
-With focus on the .NET-Stack, at least the following technologies should be added to extend the base implementation.
-
-* WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
-* EntityFramework
-* ASP.NET MVC 4 UI 
-* ASP.NET WebApi
-* ASP.Net SignalR
+## Enfity Framework Solution
+This is the EF-Branch, where a Entity Framework Layer was added. This branch is based in the main-branch
 
 ## Contribution
 The following products / tools are needed to contribute / fork.
