@@ -26,17 +26,17 @@ namespace DotNetBay.Data.EF
 
         public IQueryable<Auction> GetAuctions()
         {
-            return this.context.Auctions.Include(a => a.Bids);
+            return this.context.Auctions.Include(a => a.Bids).Include(a => a.Seller).Include(a => a.ActiveBid).Include(a => a.Winner);
         }
 
         public IQueryable<Member> GetMembers()
         {
-            return this.context.Members.Include(m => m.Auctions);
+            return this.context.Members.Include(m => m.Auctions).Include(m => m.Bids);
         }
 
         public Bid GetBidByTransactionId(Guid transactionId)
         {
-            return this.context.Bids.FirstOrDefault(b => b.TransactionId == transactionId);
+            return this.context.Bids.Include(b => b.Auction).Include(b => b.Bidder).FirstOrDefault(b => b.TransactionId == transactionId);
         }
 
         public void SaveChanges()
