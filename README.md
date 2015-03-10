@@ -10,7 +10,7 @@ This is the starting point for various extensions to the core business library. 
 With focus on the .NET-Stack, at least the following technologies should be added to extend the base implementation.
 
 * WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
-* EntityFramework
+* EntityFramework  ([EntityFramework Solution](https://github.com/michaelschnyder/dotnetbay/tree/ef), [Combined EntityFramework + MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm-ef))
 * ASP.NET MVC 4 UI 
 * ASP.NET WebApi
 * ASP.Net SignalR
