@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EB070B8C-4CBF-425D-90FA-48834DBEE9B8}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{A65C0C95-BDFD-4F20-89E8-72354E65A56A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetBay.Cmd</RootNamespace>
-    <AssemblyName>DotNetBay.Cmd</AssemblyName>
+    <RootNamespace>DotNetBay.Data.EF</RootNamespace>
+    <AssemblyName>DotNetBay.Data.EF</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,14 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\fhnw-dotnetbay\source\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\..\..\fhnw-dotnetbay\source\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,25 +46,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DateTime2Convention.cs" />
+    <Compile Include="MainDbContext.cs" />
+    <Compile Include="EfMainRepository.cs" />
+    <Compile Include="Migrations\201503092301042_InitialCreate.cs" />
+    <Compile Include="Migrations\201503092301042_InitialCreate.Designer.cs">
+      <DependentUpon>201503092301042_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503092350272_LocationAdded.cs" />
+    <Compile Include="Migrations\201503092350272_LocationAdded.Designer.cs">
+      <DependentUpon>201503092350272_LocationAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DotNetBay.Core\DotNetBay.Core.csproj">
-      <Project>{9EF46B21-B552-4CC6-A4C0-E81091A4064B}</Project>
-      <Name>DotNetBay.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DotNetBay.Data.EF\DotNetBay.Data.EF.csproj">
-      <Project>{A65C0C95-BDFD-4F20-89E8-72354E65A56A}</Project>
-      <Name>DotNetBay.Data.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DotNetBay.Data.FileStorage\DotNetBay.Data.FileStorage.csproj">
-      <Project>{92942123-C7EC-4418-9B48-F5D62BE7E7A3}</Project>
-      <Name>DotNetBay.Data.FileStorage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DotNetBay.Interfaces\DotNetBay.Interfaces.csproj">
       <Project>{17745E6C-337C-44BD-9C50-5F1D45CEADA5}</Project>
       <Name>DotNetBay.Interfaces</Name>
@@ -75,6 +69,18 @@
       <Project>{908D8739-3185-46EB-A03E-6B6C3849857C}</Project>
       <Name>DotNetBay.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201503092301042_InitialCreate.resx">
+      <DependentUpon>201503092301042_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503092350272_LocationAdded.resx">
+      <DependentUpon>201503092350272_LocationAdded.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
