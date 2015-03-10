@@ -5,7 +5,7 @@ Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9a
 
 This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
-## Enfity Framework Solution
+## Entity Framework Solution
 This is the EF-Branch, where a Entity Framework Layer was added. This branch is based in the main-branch
 
 ## Contribution
