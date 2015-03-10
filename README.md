@@ -1,20 +1,26 @@
 # dotnetbay - A .NET Auction Solution 
 Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
 Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
-Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/mvvm?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/mvvm)
+Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/mvvm-ef?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/mvvm-ef)
 
 This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
-## MVVM Solution
-This is the MVVM Branch, based on the [WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf). The source was refactored to the MVVM-Pattern.
 
-### MainWindow
-![Main Window](assets/donetbaywpf-main.png)
+## MVVM + Entity Framework Solution
+This Solution is built using the MVVM-Branch and the EntityFramework-Branch.
 
-### Sell Dialog
-![Main Window](assets/donetbaywpf-sell.png)
+## Contribution
+The following products / tools are needed to contribute / fork.
 
-### Bid Dialog
-![Main Window](assets/donetbaywpf-bid.png)
+**For Development**
+* MS Visual Studio (at least Community Version). [http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx](http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx "http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx")
+* ReSharper (optional). [https://www.jetbrains.com/student/](https://www.jetbrains.com/student/ "https://www.jetbrains.com/student/")
+* StyleCop 4.7 (optional). [http://stylecop.codeplex.com/releases/view/79972](http://stylecop.codeplex.com/releases/view/79972 "http://stylecop.codeplex.com/releases/view/79972") 
+
+
+**For Pleasure**
+* SourceTree [http://www.sourcetreeapp.com/](http://www.sourcetreeapp.com/ "http://www.sourcetreeapp.com/")
+* MarkdownPad [http://markdownpad.com/](http://markdownpad.com/ "http://markdownpad.com/")
+* NCrunch [http://www.ncrunch.net/](http://www.ncrunch.net/ http://www.ncrunch.net/)
 
 ## Authors
 * Michael Schnyder
