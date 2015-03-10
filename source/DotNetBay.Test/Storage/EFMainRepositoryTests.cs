@@ -15,8 +15,11 @@ using DotNetBay.Data.EF;
 using DotNetBay.Data.EF.Migrations;
 using DotNetBay.Interfaces;
 
+using NUnit.Framework;
+
 namespace DotNetBay.Test.Storage
 {
+    [Category("Database")]
     public class EFMainRepositoryTests : MainRepositoryTestBase
     {
         public EFMainRepositoryTests()
