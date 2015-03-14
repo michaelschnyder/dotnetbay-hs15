@@ -35,10 +35,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -52,6 +61,7 @@
     <Compile Include="Core\AuctionServiceTests.cs" />
     <Compile Include="Core\AuctioneerTests.cs" />
     <Compile Include="Core\MemberServiceTest.cs" />
+    <Compile Include="Storage\EFMainRepositoryTests.cs" />
     <Compile Include="Storage\FileSystemMainRepositoryTests.cs" />
     <Compile Include="Storage\TempDirectory.cs" />
     <Compile Include="Storage\TempFile.cs" />
@@ -62,6 +72,10 @@
     <ProjectReference Include="..\DotNetBay.Core\DotNetBay.Core.csproj">
       <Project>{9EF46B21-B552-4CC6-A4C0-E81091A4064B}</Project>
       <Name>DotNetBay.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetBay.Data.EF\DotNetBay.Data.EF.csproj">
+      <Project>{A65C0C95-BDFD-4F20-89E8-72354E65A56A}</Project>
+      <Name>DotNetBay.Data.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\DotNetBay.Data.FileStorage\DotNetBay.Data.FileStorage.csproj">
       <Project>{92942123-C7EC-4418-9B48-F5D62BE7E7A3}</Project>
@@ -77,6 +91,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
