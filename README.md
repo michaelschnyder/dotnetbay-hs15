@@ -11,7 +11,7 @@ With focus on the .NET-Stack, at least the following technologies should be adde
 
 * WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
 * EntityFramework  ([EntityFramework Solution](https://github.com/michaelschnyder/dotnetbay/tree/ef), [Combined EntityFramework + MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm-ef))
-* ASP.NET MVC 4 UI 
+* ASP.NET MVC 5 UI 
 * ASP.NET WebApi
 * ASP.Net SignalR
 
