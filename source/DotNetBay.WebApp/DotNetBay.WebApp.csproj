@@ -38,6 +38,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -104,6 +110,20 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DotNetBay.Common\DotNetBay.Common.csproj">
+      <Project>{316a27ff-f33d-4036-b1cc-1342496e06cd}</Project>
+      <Name>DotNetBay.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetBay.Core\DotNetBay.Core.csproj">
+      <Project>{9ef46b21-b552-4cc6-a4c0-e81091a4064b}</Project>
+      <Name>DotNetBay.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotNetBay.Data.EF\DotNetBay.Data.EF.csproj">
+      <Project>{a65c0c95-bdfd-4f20-89e8-72354e65a56a}</Project>
+      <Name>DotNetBay.Data.EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
