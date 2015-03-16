@@ -1,0 +1,95 @@
+﻿@model IEnumerable<DotNetBay.Model.Auction>
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<p>
+    @Html.ActionLink("New Auction", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Auction</th>
+        <th>Start Price</th>
+        <th>Current Price</th>
+        <th>Starts</th>
+        <th>Ends</th>
+        <th>Seller</th>
+        <th>Current Winner</th>
+        <th>Closed</th>
+        <th>Winner</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    var color = "";
+
+    if (item.IsRunning)
+    {
+        color = "#C0EBB5";
+    }
+    else if(item.IsClosed)
+    {
+        color = "#EBB5B5";
+    }
+    
+    <tr style="background-color: @color">
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CurrentPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDateTimeUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDateTimeUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Seller.DisplayName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActiveBid.Bidder.DisplayName)
+        </td>
+        <td>
+            @if (item.IsClosed)
+            {
+                @Html.DisplayFor(modelItem => item.CloseDateTimeUtc)
+            }
+        </td>
+        <td>
+            @if (item.IsRunning)
+            {
+                @:Running
+            }
+            else if (item.IsClosed)
+            {
+                @:Closed
+            }
+            else
+            {
+                @:Not Started
+            }
+        </td>
+        <td>
+
+            @if (!item.IsClosed)
+            {
+                @Html.ActionLink("Bieten", "Create", "Bids", new { AuctionId = item.Id }, null)
+                @:|
+            }
+            
+            @Html.ActionLink("Details", "Details", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
