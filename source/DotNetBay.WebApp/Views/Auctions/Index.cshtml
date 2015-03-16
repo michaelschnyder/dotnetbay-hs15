@@ -12,15 +12,16 @@
 <table class="table">
     <tr>
         <th>Auction</th>
+        <th>Status</th>
         <th>Start Price</th>
         <th>Current Price</th>
+        <th>Bids</th>
         <th>Starts</th>
         <th>Ends</th>
         <th>Seller</th>
         <th>Current Winner</th>
         <th>Closed</th>
         <th>Winner</th>
-        <th>Status</th>
         <th></th>
     </tr>
 
@@ -42,10 +43,27 @@
             @Html.DisplayFor(modelItem => item.Title)
         </td>
         <td>
+            @if (item.IsRunning)
+            {
+                @:Running
+            }
+            else if (item.IsClosed)
+            {
+                @:Closed
+            }
+            else
+            {
+                @:Not Started
+            }
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.StartPrice)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CurrentPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bids.Count)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StartDateTimeUtc)
@@ -66,18 +84,7 @@
             }
         </td>
         <td>
-            @if (item.IsRunning)
-            {
-                @:Running
-            }
-            else if (item.IsClosed)
-            {
-                @:Closed
-            }
-            else
-            {
-                @:Not Started
-            }
+            @Html.DisplayFor(modelItem => item.Winner.DisplayName)
         </td>
         <td>
 
