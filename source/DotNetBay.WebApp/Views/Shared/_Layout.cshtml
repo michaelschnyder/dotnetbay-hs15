@@ -18,9 +18,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 @Html.ActionLink("DotNetBay", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Auctions", "Index", "Auctions", new { area = "" }, new { @class = "" })
+                    </li>
                 </ul>
             </div>
         </div>
