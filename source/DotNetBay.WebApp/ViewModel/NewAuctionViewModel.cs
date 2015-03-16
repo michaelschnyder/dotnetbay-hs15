@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace DotNetBay.WebApp.ViewModel
 {
@@ -28,5 +29,7 @@ namespace DotNetBay.WebApp.ViewModel
         [Display(Name = "End Date and Time (UTC)")]
         [Required]
         public DateTime EndDateTimeUtc { get; set; }
+
+        public HttpPostedFileBase Image { get; set; }
     }
 }

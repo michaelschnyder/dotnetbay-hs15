@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net.Mime;
 using System.Web.Mvc;
 
 using DotNetBay.Core;
@@ -42,8 +43,6 @@ namespace DotNetBay.WebApp.Controllers
             if (this.ModelState.IsValid)
             {
                 var members = new SimpleMemberService(this.mainRepository);
-
-
                 var newAuction = new Auction()
                                      {
                                          Title = auction.Title,
@@ -54,10 +53,33 @@ namespace DotNetBay.WebApp.Controllers
                                          Seller = members.GetCurrentMember()
                                      };
 
+                // Get File Contents
+                if (auction.Image != null)
+                {
+                    byte[] fileContent = new byte[auction.Image.InputStream.Length];
+                    auction.Image.InputStream.Read(fileContent, 0, fileContent.Length);
+
+                    newAuction.Image = fileContent;
+                }
+
                 this.service.Save(newAuction);
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Image(int auctionId)
+        {
+            var auction = this.mainRepository.GetAuctions().FirstOrDefault(a => a.Id == auctionId);
+
+            if (auction == null)
+            {
+                return this.HttpNotFound();
+            } 
+
+            return new FileContentResult(auction.Image, "image/jpg");
+
         }
     }
 }
