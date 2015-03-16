@@ -22,7 +22,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AuctionTitle, htmlAttributes: new { @class = "col-md-2" })
             <div class="col-md-10">
-                @Model.AuctionTitle
+                @Model.AuctionTitle<br/>
+
+                <img src="/Auctions/Image?auctionId=@Model.AuctionId" style="max-height: 220px; max-width: 280px" />
+
             </div>
         </div>
 

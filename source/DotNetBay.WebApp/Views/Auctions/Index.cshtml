@@ -39,8 +39,11 @@
     }
     
     <tr style="background-color: @color">
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
+        <td><b>@Html.DisplayFor(modelItem => item.Title)</b><br />
+            <p style="text-align: center">
+                
+                <img src="/Auctions/Image?auctionId=@item.Id" style="max-height: 120px; max-width: 180px"/>
+            </p>
         </td>
         <td>
             @if (item.IsRunning)
