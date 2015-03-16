@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using DotNetBay.Core;
 using DotNetBay.Data.EF;
 using DotNetBay.Model;
+using DotNetBay.WebApp.ViewModel;
 
 namespace DotNetBay.WebApp.Controllers
 {
@@ -36,12 +37,25 @@ namespace DotNetBay.WebApp.Controllers
         // POST: Auctions/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StartPrice,Title,Description,StartDateTimeUtc,EndDateTimeUtc")] Auction auction)
+        public ActionResult Create(NewAuctionViewModel auction)
         {
-            var members = new SimpleMemberService(this.mainRepository);
-            auction.Seller = members.GetCurrentMember();
+            if (this.ModelState.IsValid)
+            {
+                var members = new SimpleMemberService(this.mainRepository);
 
-            this.service.Save(auction);
+
+                var newAuction = new Auction()
+                                     {
+                                         Title = auction.Title,
+                                         Description = auction.Description,
+                                         StartDateTimeUtc = auction.StartDateTimeUtc,
+                                         EndDateTimeUtc = auction.EndDateTimeUtc,
+                                         StartPrice = auction.StartPrice,
+                                         Seller = members.GetCurrentMember()
+                                     };
+
+                this.service.Save(newAuction);
+            }
 
             return RedirectToAction("Index");
         }
