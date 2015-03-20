@@ -4,12 +4,18 @@ Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atb
 Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/asp-mvc?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/asp-mvc)
 This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
-#MVVM Solution
+#ASP.NET MVC Solution
 
 This is the ASP.NET MVC Branch, based on the main branch. The ef-Branch has been merged to use EntityFramework as ORM.
 
-###Home-Page
-...
+###Home Page
+![Home Page](assets/donetbay-aspmvc-home.png)
+
+### Sell Site
+![Sell Page](assets/donetbay-aspmvc-sell.png)
+
+### Bid Site
+![Bid Page](assets/donetbay-aspmvc-bid.png)
 
 ## Authors
 * Michael Schnyder
