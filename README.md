@@ -1,7 +1,7 @@
 # dotnetbay - A .NET Auction Solution 
 Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
 Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
-Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/asp-mvc?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/asp-mvc)
+Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/aspnet-mvc?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/aspnet-mvc)
 This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
 #ASP.NET MVC Solution
