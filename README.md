@@ -11,10 +11,10 @@ This is the MVVM Branch, based on the [WPF Solution](https://github.com/michaels
 ![Main Window](assets/donetbaywpf-main.png)
 
 ### Sell Dialog
-![Main Window](assets/donetbaywpf-sell.png)
+![Sell Dialog](assets/donetbaywpf-sell.png)
 
 ### Bid Dialog
-![Main Window](assets/donetbaywpf-bid.png)
+![Bid Dialog](assets/donetbaywpf-bid.png)
 
 ## Authors
 * Michael Schnyder
