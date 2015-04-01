@@ -1,9 +1,20 @@
-﻿using System;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Program.cs" company="">
+//   
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+
+
+using System;
+using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 
 using DotNetBay.Core;
 using DotNetBay.Core.Execution;
-using DotNetBay.Data.FileStorage;
+using DotNetBay.Data.EF;
+using DotNetBay.Data.EF.Migrations;
 
 namespace DotNetBay.Cmd
 {
@@ -12,12 +23,19 @@ namespace DotNetBay.Cmd
     /// </summary>
     public class Program
     {
+
         public static void Main(string[] args)
         {
+            // ROLA - This is a hack to ensure that Entity Framework SQL Provider is copied across to the output folder.
+            // As it is installed in the GAC, Copy Local does not work. It is required for probing.
+            // Fixed "Provider not loaded" error
+            var ensureDLLIsCopied = SqlProviderServices.Instance;
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MainDbContext, Configuration>());
+            
             Console.WriteLine("DotNetBay Commandline");
 
-            var store = new FileSystemMainRepository("store.json");
-            
+            var store = new EFMainRepository();
+
             var auctionService = new AuctionService(store, new SimpleMemberService(store));
             var auctionRunner = new AuctionRunner(store);
             
