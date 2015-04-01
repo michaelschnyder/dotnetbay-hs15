@@ -13,8 +13,6 @@ namespace DotNetBay.WebApi.Dtos
 
         public string Description { get; set; }
 
-        public byte[] Image { get; set; }
-
         public double CurrentPrice { get; set; }
 
         /// <summary>
@@ -34,7 +32,9 @@ namespace DotNetBay.WebApi.Dtos
 
         public string SellerName { get; set; }
 
-        public string WinnerName { get; set; }
+        public string FinalWinnerName { get; set; }
+
+        public string CurrentWinnerName { get; set; }
 
         public List<BidDto> Bids { get; set; }
 

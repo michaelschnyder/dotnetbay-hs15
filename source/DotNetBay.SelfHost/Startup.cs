@@ -1,8 +1,14 @@
 ﻿using System;
+using System.CodeDom;
+using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using System.Web.Http;
 
 using Microsoft.Owin;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+
 using Owin;
 
 [assembly: OwinStartup(typeof(DotNetBay.SelfHost.Startup))]
@@ -25,6 +31,11 @@ namespace DotNetBay.SelfHost
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters.JsonFormatter.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             app.UseWebApi(config); 
         }
