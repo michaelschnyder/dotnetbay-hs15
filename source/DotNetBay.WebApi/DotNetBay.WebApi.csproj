@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AuctionController.cs" />
+    <Compile Include="Dtos\AuctionDto.cs" />
+    <Compile Include="Dtos\BidDto.cs" />
     <Compile Include="Controller\StatusController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
