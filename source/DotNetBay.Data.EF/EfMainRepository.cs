@@ -26,12 +26,12 @@ namespace DotNetBay.Data.EF
 
         public IQueryable<Auction> GetAuctions()
         {
-            return this.context.Auctions.Include(a => a.Bids);
+            return this.context.Auctions.Include(a => a.Bids).Include(a => a.Seller).Include(a => a.ActiveBid).Include(a => a.ActiveBid.Bidder).Include(a => a.Winner);
         }
 
         public IQueryable<Member> GetMembers()
         {
-            return this.context.Members.Include(m => m.Auctions);
+            return this.context.Members.Include(m => m.Auctions).Include(m => m.Bids);
         }
 
         public Bid GetBidByTransactionId(Guid transactionId)
