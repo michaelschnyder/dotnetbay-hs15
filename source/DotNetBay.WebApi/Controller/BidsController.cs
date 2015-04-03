@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 using DotNetBay.Core;
@@ -23,9 +21,9 @@ namespace DotNetBay.WebApi.Controller
         public BidsController()
         {
             this.repo = new EFMainRepository();
-            this.memberService = new SimpleMemberService(repo);
+            this.memberService = new SimpleMemberService(this.repo);
 
-            this.auctionService = new AuctionService(repo, memberService);
+            this.auctionService = new AuctionService(this.repo, this.memberService);
         }
 
         [HttpGet]
@@ -55,11 +53,9 @@ namespace DotNetBay.WebApi.Controller
                 return this.NotFound();
             }
 
-            var currentMember = this.memberService.GetCurrentMember();
-
             try
             {
-                var bid = this.auctionService.PlaceBid(currentMember, auction, dto.Amount);
+                var bid = this.auctionService.PlaceBid(auction, dto.Amount);
                 return this.Created(string.Format("api/bids/{0}", bid.TransactionId), MapBidToDto(bid));
             }
             catch (Exception e)

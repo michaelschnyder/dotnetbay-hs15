@@ -50,10 +50,9 @@ namespace DotNetBay.WebApp.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                var bidder = new SimpleMemberService(this.mainRepository).GetCurrentMember();
                 var auction = this.service.GetAll().FirstOrDefault(a => a.Id == bid.AuctionId);
 
-                this.service.PlaceBid(bidder, auction, bid.BidAmount);
+                this.service.PlaceBid(auction, bid.BidAmount);
             }
 
             return this.RedirectToAction("Index", "Auctions");
