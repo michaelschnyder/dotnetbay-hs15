@@ -2,17 +2,16 @@
 Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
 Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
 
-A bootstrap solution to build your own basic auction portal. For an implementation example visit https://github.com/michaelschnyder/dotnetbay
+This is a solution repository for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
-## Goals
-This is the starting point for various extensions to the core business library. The current storage implementation is done by serializing data to json-files. There is no graphical user interface, just a command line.
+## Solutions for the DotNetBay-Auction
 
-With focus on the .NET-Stack, at least the following technologies should be added to extend the base implementation.
+With focus on the .NET-Stack, at least the following technologies have been added to extend the base implementation.
 
 * WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
 * EntityFramework  ([EntityFramework Solution](https://github.com/michaelschnyder/dotnetbay/tree/ef), [Combined EntityFramework + MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm-ef))
 * ASP.NET MVC 5 UI  ([Solution](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc))
-* ASP.NET WebApi
+* ASP.NET Web API ([SelfHosted Solution](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-webapi), [ASP.NET MVC Integrated](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc-webapi), [ASP.NET + WPF Combination](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-wpf))
 * ASP.Net SignalR
 
 ## Contribution
