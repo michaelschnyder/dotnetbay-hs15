@@ -36,7 +36,7 @@ namespace DotNetBay.Data.EF
 
         public Bid GetBidByTransactionId(Guid transactionId)
         {
-            return this.context.Bids.FirstOrDefault(b => b.TransactionId == transactionId);
+            return this.context.Bids.Include(b => b.Bidder).Include(b => b.Auction).FirstOrDefault(b => b.TransactionId == transactionId);
         }
 
         public void SaveChanges()
