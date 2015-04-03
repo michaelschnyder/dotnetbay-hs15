@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 using DotNetBay.Core;
@@ -100,24 +102,22 @@ namespace DotNetBay.WebApi.Controller
 
         [HttpPost]
         [Route("api/auctions/{id}/image")]
-        public IHttpActionResult AddImageForAuction(long id)
+        public async Task<IHttpActionResult> AddImageForAuction(long id)
         {
             var auction = this.auctionService.GetAll().FirstOrDefault(a => a.Id == id);
 
             if (auction != null)
             {
-                IEnumerable<HttpContent> parts = this.Request.Content.ReadAsMultipartAsync().Result.Contents;
-
-                foreach (var part in parts)
+                var streamProvider = await this.Request.Content.ReadAsMultipartAsync(); // HERE
+                foreach (var file in streamProvider.Contents)
                 {
-                    var result = part.ReadAsByteArrayAsync().Result;
-
-                    auction.Image = result;
+                    var image = await file.ReadAsByteArrayAsync();
+                    auction.Image = image;
 
                     this.auctionService.Save(auction);
-
-                    return this.Ok();
                 }
+
+                return this.Ok();
             }
 
             return this.NotFound();
