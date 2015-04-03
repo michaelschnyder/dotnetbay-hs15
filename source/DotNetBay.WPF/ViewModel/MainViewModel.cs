@@ -57,7 +57,7 @@ namespace DotNetBay.WPF.ViewModel
 
             // Find & add new auction
             var allAuctions = this.auctionService.GetAll();
-            var newAuctions = allAuctions.Where(a => this.auctions.All(vm => vm.Auction != a));
+            var newAuctions = allAuctions.Where(a => this.auctions.All(vm => vm.Auction.Id != a.Id));
 
             foreach (var auction in newAuctions)
             {
@@ -68,7 +68,7 @@ namespace DotNetBay.WPF.ViewModel
 
         private void ApplyChanges(Auction auction)
         {
-            var auctionVm = this.auctions.FirstOrDefault(vm => vm.Auction == auction);
+            var auctionVm = this.auctions.FirstOrDefault(vm => vm.Auction.Id == auction.Id);
 
             if (auctionVm != null)
             {
