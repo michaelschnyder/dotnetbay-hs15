@@ -5,7 +5,7 @@ Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9a
 
 This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
-#ASP.NET MVC Solution
+##ASP.NET MVC Solution
 
 This is the ASP.NET MVC Branch, based on the main branch. The ef-Branch has been merged to use EntityFramework as ORM.
 
