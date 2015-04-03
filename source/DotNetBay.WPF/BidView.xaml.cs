@@ -49,7 +49,7 @@ namespace DotNetBay.WPF
 
         private void PlaceBidAuction_Click(object sender, RoutedEventArgs e)
         {
-            this.auctionService.PlaceBid(this.simpleMemberService.GetCurrentMember(), this.SelectedAuction, this.YourBid);
+            this.auctionService.PlaceBid(this.SelectedAuction, this.YourBid);
 
             this.Close();
         }
