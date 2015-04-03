@@ -76,10 +76,14 @@ namespace DotNetBay.WebApp.Controllers
             if (auction == null)
             {
                 return this.HttpNotFound();
-            } 
+            }
 
-            return new FileContentResult(auction.Image, "image/jpg");
+            if (auction.Image != null)
+            {
+                return new FileContentResult(auction.Image, "image/jpg");
+            }
 
+            return new EmptyResult();
         }
     }
 }
