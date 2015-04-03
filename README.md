@@ -4,7 +4,7 @@ Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atb
 
 This is a solution repository for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
-## Solutions for the DotNetBay-Auction
+## Sample Implementations
 
 With focus on the .NET-Stack, at least the following technologies have been added to extend the base implementation.
 
