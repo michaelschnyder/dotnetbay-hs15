@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -17,14 +17,14 @@ namespace DotNetBay.WebApi.Controller
     {
         private readonly IAuctionService auctionService;
 
-        private readonly SimpleMemberService memberService;
+        private readonly IMemberService memberService;
 
         public AuctionController()
         {
             var repo = new EFMainRepository();
             this.memberService = new SimpleMemberService(repo);
 
-            this.auctionService = new AuctionService(repo, memberService);
+            this.auctionService = new AuctionService(repo, this.memberService);
         }
 
         [HttpGet]
@@ -37,7 +37,7 @@ namespace DotNetBay.WebApi.Controller
 
             foreach (var auction in allAuctions)
             {
-                auctionsDto.Add(this.Map(auction));
+                auctionsDto.Add(this.MapAuctionToDto(auction));
             }
 
             return this.Ok(auctionsDto);
@@ -47,17 +47,24 @@ namespace DotNetBay.WebApi.Controller
         [Route("api/auctions")]
         public IHttpActionResult AddNewAuction([FromBody] AuctionDto dto)
         {
-            var theNewAuction = new Auction();
+            var theNewAuction = new Auction
+            {
+                Seller = this.memberService.GetCurrentMember(), 
+                EndDateTimeUtc = dto.EndDateTimeUtc, 
+                StartDateTimeUtc = dto.StartDateTimeUtc, 
+                Title = dto.Title, 
+                StartPrice = dto.StartPrice
+            };
 
-            theNewAuction.Seller = this.memberService.GetCurrentMember();
-            theNewAuction.EndDateTimeUtc = dto.EndDateTimeUtc;
-            theNewAuction.StartDateTimeUtc = dto.StartDateTimeUtc;
-            theNewAuction.Title = dto.Title;
-            theNewAuction.StartPrice = dto.StartPrice;
-
-            this.auctionService.Save(theNewAuction);
-
-            return this.Created(string.Format("api/auctions/{0}", theNewAuction.Id), this.Map(theNewAuction));
+            try
+            {
+                this.auctionService.Save(theNewAuction);
+                return this.Created(string.Format("api/auctions/{0}", theNewAuction.Id), this.MapAuctionToDto(theNewAuction));
+            }
+            catch (Exception e)
+            {
+                return this.BadRequest(e.Message);
+            }
         }
 
         [HttpGet]
@@ -68,7 +75,7 @@ namespace DotNetBay.WebApi.Controller
 
             if (auction != null)
             {
-                return this.Ok(this.Map(auction));
+                return this.Ok(this.MapAuctionToDto(auction));
             }
 
             return this.NotFound();
@@ -82,7 +89,7 @@ namespace DotNetBay.WebApi.Controller
 
             if (auction != null && auction.Image != null)
             {
-                HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+                var result = new HttpResponseMessage(HttpStatusCode.OK);
                 result.Content = new ByteArrayContent(auction.Image);
                 result.Content.Headers.ContentType = new MediaTypeHeaderValue("image/png");
                 return result;
@@ -116,38 +123,37 @@ namespace DotNetBay.WebApi.Controller
             return this.NotFound();
         }
 
-        private AuctionDto Map(Auction auction)
+        private AuctionDto MapAuctionToDto(Auction auction)
         {
-            var dto = new AuctionDto()
-                          {
-                              Id = auction.Id,
-                              StartPrice = auction.StartPrice,
-                              Title = auction.Title,
-                              Description = auction.Description,
-                              CurrentPrice = auction.CurrentPrice,
-                              StartDateTimeUtc = auction.StartDateTimeUtc,
-                              EndDateTimeUtc = auction.EndDateTimeUtc,
-                              CloseDateTimeUtc = auction.CloseDateTimeUtc,
-                              SellerName = auction.Seller != null ? auction.Seller.DisplayName : null,
-                              FinalWinnerName = auction.Winner != null ? auction.Winner.DisplayName : null,
-                              CurrentWinnerName =
-                                  auction.ActiveBid != null ? auction.ActiveBid.Bidder.DisplayName : null,
-                              IsClosed = auction.IsClosed,
-                              IsRunning = auction.IsRunning,
-                          };
+            var dto = new AuctionDto
+            {
+                Id = auction.Id, 
+                StartPrice = auction.StartPrice, 
+                Title = auction.Title, 
+                Description = auction.Description, 
+                CurrentPrice = auction.CurrentPrice, 
+                StartDateTimeUtc = auction.StartDateTimeUtc, 
+                EndDateTimeUtc = auction.EndDateTimeUtc, 
+                CloseDateTimeUtc = auction.CloseDateTimeUtc, 
+                SellerName = auction.Seller != null ? auction.Seller.DisplayName : null, 
+                FinalWinnerName = auction.Winner != null ? auction.Winner.DisplayName : null, 
+                CurrentWinnerName = auction.ActiveBid != null ? auction.ActiveBid.Bidder.DisplayName : null, 
+                IsClosed = auction.IsClosed, 
+                IsRunning = auction.IsRunning, 
+                Bids = new List<BidDto>(), 
+            };
 
-            dto.Bids = new List<BidDto>();
 
             foreach (var bid in auction.Bids)
             {
                 dto.Bids.Add(
                     new BidDto()
                         {
-                            Id = bid.Id,
-                            TransactionId = bid.TransactionId,
-                            ReceivedOnUtc = bid.ReceivedOnUtc,
-                            BidderName = bid.Bidder.DisplayName,
-                            Accepted = bid.Accepted,
+                            Id = bid.Id, 
+                            TransactionId = bid.TransactionId, 
+                            ReceivedOnUtc = bid.ReceivedOnUtc, 
+                            BidderName = bid.Bidder.DisplayName, 
+                            Accepted = bid.Accepted, 
                             Amount = bid.Amount
                         });
             }

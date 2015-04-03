@@ -15,5 +15,7 @@ namespace DotNetBay.WebApi.Dtos
         public double Amount { get; set; }
 
         public bool? Accepted { get; set; }
+
+        public string AuctionTitle { get; set; }
     }
 }
