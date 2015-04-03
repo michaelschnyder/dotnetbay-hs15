@@ -72,7 +72,7 @@ namespace DotNetBay.WPF.ViewModel
 
         private void AddBidAndCloseAction(Window window)
         {
-            this.auctionService.PlaceBid(this.memberService.GetCurrentMember(), this.selectedAuction, this.YourBid);
+            this.auctionService.PlaceBid(this.selectedAuction, this.YourBid);
 
             window.Close();
         }
