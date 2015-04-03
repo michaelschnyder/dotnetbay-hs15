@@ -11,8 +11,8 @@ With focus on the .NET-Stack, at least the following technologies have been adde
 * WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
 * EntityFramework  ([EntityFramework Solution](https://github.com/michaelschnyder/dotnetbay/tree/ef), [Combined EntityFramework + MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm-ef))
 * ASP.NET MVC 5 UI  ([Solution](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc))
-* ASP.NET Web API ([SelfHosted Solution](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-webapi), [ASP.NET MVC Integrated](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc-webapi), [ASP.NET + WPF Combination](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-wpf))
-* ASP.Net SignalR
+* ASP.NET Web API ([SelfHosted](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-webapi), [Combined ASP.NET MVC + Web API](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc-webapi), [Final Solution](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-wpf))
+* ASP.NET SignalR
 
 ## Contribution
 The following products / tools are needed to contribute / fork.
