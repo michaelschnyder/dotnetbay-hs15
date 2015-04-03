@@ -1,33 +1,33 @@
 # dotnetbay - A .NET Auction Solution 
 Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
 Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
+Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/aspnet-webapi?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/aspnet-webapi)
 
-A bootstrap solution to build your own basic auction portal. For an implementation example visit https://github.com/michaelschnyder/dotnetbay
+This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
-## Goals
-This is the starting point for various extensions to the core business library. The current storage implementation is done by serializing data to json-files. There is no graphical user interface, just a command line.
+## ASP.NET Web API Solution
 
-With focus on the .NET-Stack, at least the following technologies should be added to extend the base implementation.
+This Branch contains a ASP.NET Standalone version of the DotNetBay-Service based on Entity Framework. There is no Runner which handles auctions. The Web API itself is selfhosted and OWIN-based. You can just start the SelfHost-Commandline-Project.
 
-* WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
-* EntityFramework  ([EntityFramework Solution](https://github.com/michaelschnyder/dotnetbay/tree/ef), [Combined EntityFramework + MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm-ef))
-* ASP.NET MVC 5 UI  ([Solution](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc))
-* ASP.NET WebApi
-* ASP.Net SignalR
+![](assets/webapi-auction.png)
 
-## Contribution
-The following products / tools are needed to contribute / fork.
+###Endpoints
+The following Endpoints are implemented
 
-**For Development**
-* MS Visual Studio (at least Community Version). [http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx](http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx "http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx")
-* ReSharper (optional). [https://www.jetbrains.com/student/](https://www.jetbrains.com/student/ "https://www.jetbrains.com/student/")
-* StyleCop 4.7 (optional). [http://stylecop.codeplex.com/releases/view/79972](http://stylecop.codeplex.com/releases/view/79972 "http://stylecop.codeplex.com/releases/view/79972") 
+**General**
+* API Status: `api/status`
 
+**Auctions**
+* All Auctions: `GET /api/auctions` (as Json)
+* Add Auction: `POST /api/auctions` (as Json)
+* Single Auction: `GET /api/auctions/{id}` (as Json)
+* Get Image for Auction: `GET api/auctions/{id}/image` (as Json)
+* Save Image for Auction: `POST api/auctions/{id}/image` (as Multipart)
 
-**For Pleasure**
-* SourceTree [http://www.sourcetreeapp.com/](http://www.sourcetreeapp.com/ "http://www.sourcetreeapp.com/")
-* MarkdownPad [http://markdownpad.com/](http://markdownpad.com/ "http://markdownpad.com/")
-* NCrunch [http://www.ncrunch.net/](http://www.ncrunch.net/ http://www.ncrunch.net/)
+**Bids**
+* Receive all Bids for Auction: `POST /api/auctions/{auctionId}/bids` (as Json)
+* Place a Bid for Auction: `POST /api/auctions/{auctionId}/bids` (as Json)
+* Receive specific bid: `GET /api/bids/{transactionId}` (as Json)
 
 ## Authors
 * Michael Schnyder
