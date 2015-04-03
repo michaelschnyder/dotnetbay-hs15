@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity.SqlServer;
+using System.Net.Http;
 
 using DotNetBay.WebApi.Controller;
 
@@ -11,12 +12,23 @@ namespace DotNetBay.SelfHost
     {
         static void Main(string[] args)
         {
-            var typesLoaded = typeof(StatusController);
-            var ensureDLLIsCopied = SqlProviderServices.Instance;
+            var typesLoaded = new[] { typeof(StatusController), typeof(SqlProviderServices) };
 
-            WebApp.Start<Startup>(url: "http://localhost:9001/");
+            var host = "http://localhost:9001/";
 
-            Console.ReadLine();
+            using (var app = WebApp.Start<Startup>(url: host))
+            {
+                // SelfCheck
+                var client = new HttpClient();
+                client.BaseAddress = new Uri(host);
+
+                var response = client.GetAsync("/api/status").Result;
+
+                Console.WriteLine(response);
+
+                Console.Write("Press enter to quit.");
+                Console.ReadLine();
+            }
         }
     }
 }
