@@ -1,33 +1,22 @@
 # dotnetbay - A .NET Auction Solution 
 Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
 Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
+Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb/branch/aspnet-mvc-webapi?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay/branch/aspnet-mvc-webapi)
 
-A bootstrap solution to build your own basic auction portal
+This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
-## Goals
-This is the starting point for various extensions to the core business library. The current storage implementation is done by serializing data to json-files. There is no graphical user interface, just a command line.
+## ASP.NET MVC + ASP.NET Web API OWIN Combination
+This is a sample solution where the two solutions for ASP.NET MVC and ASP.NET Web API are combined to one single solution. Therefore every feature from the branches ASP.NET MVC and Web API are available here.
 
-With focus on the .NET-Stack, at least the following technologies should be added to extend the base implementation.
+The integration of ASP.NET Web API has been done using OWIN as desdribed here: [michaelschnyder/aspnet-mvc-webapi-owin](https://github.com/michaelschnyder/aspnet-mvc-webapi-owin "michaelschnyder/aspnet-mvc-webapi-owin")
 
-* WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
-* EntityFramework  ([EntityFramework Solution](https://github.com/michaelschnyder/dotnetbay/tree/ef), [Combined EntityFramework + MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm-ef))
-* ASP.NET MVC 5 UI  ([Solution](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc))
-* ASP.NET WebApi
-* ASP.Net SignalR
+### ASP.NET MVC
+See https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc for details
+![](assets/donetbay-aspmvc-home.png)
 
-## Contribution
-The following products / tools are needed to contribute / fork.
-
-**For Development**
-* MS Visual Studio (at least Community Version). [http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx](http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx "http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx")
-* ReSharper (optional). [https://www.jetbrains.com/student/](https://www.jetbrains.com/student/ "https://www.jetbrains.com/student/")
-* StyleCop 4.7 (optional). [http://stylecop.codeplex.com/releases/view/79972](http://stylecop.codeplex.com/releases/view/79972 "http://stylecop.codeplex.com/releases/view/79972") 
-
-
-**For Pleasure**
-* SourceTree [http://www.sourcetreeapp.com/](http://www.sourcetreeapp.com/ "http://www.sourcetreeapp.com/")
-* MarkdownPad [http://markdownpad.com/](http://markdownpad.com/ "http://markdownpad.com/")
-* NCrunch [http://www.ncrunch.net/](http://www.ncrunch.net/ http://www.ncrunch.net/)
+### ASP.NET Web API
+See https://github.com/michaelschnyder/dotnetbay/tree/aspnet-webapi for details
+![](assets/webapi-auction.png)
 
 ## Authors
 * Michael Schnyder
