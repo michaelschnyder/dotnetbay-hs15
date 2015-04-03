@@ -18,18 +18,19 @@ namespace DotNetBay.WPF.ViewModel
 
         private ObservableCollection<AuctionViewModel> auctions = new ObservableCollection<AuctionViewModel>();
 
-        public MainViewModel(IAuctioneer auctioneer, IAuctionService auctionService)
+        public MainViewModel(IAuctionService auctionService)
         {
-            this.auctioneer = auctioneer;
             this.auctionService = auctionService;
 
             this.AddNewAuctionCommand = new RelayCommand(this.AddNewAuctionAction);
 
             // Register for Events
+            /*
             this.auctioneer.AuctionEnded += (sender, args) => { this.ApplyChanges(args.Auction); };
             this.auctioneer.AuctionStarted += (sender, args) => { this.ApplyChanges(args.Auction); };
             this.auctioneer.BidAccepted += (sender, args) => { this.ApplyChanges(args.Auction); };
             this.auctioneer.BidDeclined += (sender, args) => { this.ApplyChanges(args.Auction); };
+            */
 
             // Setup UI
             var allAuctions = this.auctionService.GetAll();

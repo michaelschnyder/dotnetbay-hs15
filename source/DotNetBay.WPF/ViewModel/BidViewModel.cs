@@ -10,15 +10,12 @@ namespace DotNetBay.WPF.ViewModel
 {
     public class BidViewModel : ViewModelBase
     {
-        private readonly IMemberService memberService;
-
         private readonly IAuctionService auctionService;
 
         private readonly Auction selectedAuction;
 
-        public BidViewModel(Auction selectedAuction, IMemberService memberService, IAuctionService auctionService)
+        public BidViewModel(Auction selectedAuction,IAuctionService auctionService)
         {
-            this.memberService = memberService;
             this.auctionService = auctionService;
             this.selectedAuction = selectedAuction;
 
@@ -72,7 +69,7 @@ namespace DotNetBay.WPF.ViewModel
 
         private void AddBidAndCloseAction(Window window)
         {
-            this.auctionService.PlaceBid(this.memberService.GetCurrentMember(), this.selectedAuction, this.YourBid);
+            this.auctionService.PlaceBid(this.selectedAuction, this.YourBid);
 
             window.Close();
         }
