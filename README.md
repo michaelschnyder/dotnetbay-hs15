@@ -8,19 +8,9 @@ This is a solution branch for the bootstrapped solution from https://github.com/
 ## Entity Framework Solution
 This is the EF-Branch, where a Entity Framework Layer was added. This branch is based in the main-branch
 
-## Contribution
-The following products / tools are needed to contribute / fork.
+![Database Schema](assets/dotnetbay-ef-dbschema.png)
 
-**For Development**
-* MS Visual Studio (at least Community Version). [http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx](http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx "http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx")
-* ReSharper (optional). [https://www.jetbrains.com/student/](https://www.jetbrains.com/student/ "https://www.jetbrains.com/student/")
-* StyleCop 4.7 (optional). [http://stylecop.codeplex.com/releases/view/79972](http://stylecop.codeplex.com/releases/view/79972 "http://stylecop.codeplex.com/releases/view/79972") 
-
-
-**For Pleasure**
-* SourceTree [http://www.sourcetreeapp.com/](http://www.sourcetreeapp.com/ "http://www.sourcetreeapp.com/")
-* MarkdownPad [http://markdownpad.com/](http://markdownpad.com/ "http://markdownpad.com/")
-* NCrunch [http://www.ncrunch.net/](http://www.ncrunch.net/ http://www.ncrunch.net/)
+The solution is completely built using EF Code-First and with **no** adjustments to the model classes.
 
 ## Authors
 * Michael Schnyder
