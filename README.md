@@ -8,7 +8,7 @@ This is a solution branch for the bootstrapped solution from https://github.com/
 ## Entity Framework Solution
 This is the EF-Branch, where a Entity Framework Layer was added. This branch is based in the main-branch
 
-![Database Schema](assets/dotnetbay-ef-dbschema.png)
+![Database Schema](assets/dotnetbay-ef-database.png)
 
 The solution is completely built using EF Code-First and with **no** adjustments to the model classes.
 
