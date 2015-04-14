@@ -26,12 +26,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBay.WebApi", "DotNetBay.WebApi\DotNetBay.WebApi.csproj", "{4D726F5A-FAA4-48FE-843C-7C257B060237}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBay.SelfHost", "DotNetBay.SelfHost\DotNetBay.SelfHost.csproj", "{1CD0252E-29A7-49FF-A9D8-504EB1957CEA}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBay.Data.EF", "DotNetBay.Data.EF\DotNetBay.Data.EF.csproj", "{A65C0C95-BDFD-4F20-89E8-72354E65A56A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBay.WebApp", "DotNetBay.WebApp\DotNetBay.WebApp.csproj", "{9CD90EA9-75F6-4027-87BD-380D01BA6640}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBay.WPF", "DotNetBay.WPF\DotNetBay.WPF.csproj", "{E03406CF-2231-4EE0-B651-B3BD92DE1F85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBay.WPF.Test", "DotNetBay.WPF.Test\DotNetBay.WPF.Test.csproj", "{8CC9014C-4DCD-46EB-9F7B-E3987ECD9EB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetBay.SignalR", "DotNetBay.SignalR\DotNetBay.SignalR.csproj", "{735355A4-0CEE-42A5-94A0-98AF0C09706B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +95,10 @@ Global
 		{8CC9014C-4DCD-46EB-9F7B-E3987ECD9EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CC9014C-4DCD-46EB-9F7B-E3987ECD9EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CC9014C-4DCD-46EB-9F7B-E3987ECD9EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{735355A4-0CEE-42A5-94A0-98AF0C09706B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735355A4-0CEE-42A5-94A0-98AF0C09706B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735355A4-0CEE-42A5-94A0-98AF0C09706B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735355A4-0CEE-42A5-94A0-98AF0C09706B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

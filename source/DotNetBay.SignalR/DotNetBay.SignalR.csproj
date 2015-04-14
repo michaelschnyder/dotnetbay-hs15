@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4D726F5A-FAA4-48FE-843C-7C257B060237}</ProjectGuid>
+    <ProjectGuid>{735355A4-0CEE-42A5-94A0-98AF0C09706B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetBay.WebApi</RootNamespace>
-    <AssemblyName>DotNetBay.WebApi</AssemblyName>
+    <RootNamespace>DotNetBay.SignalR</RootNamespace>
+    <AssemblyName>DotNetBay.SignalR</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,21 +34,20 @@
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.0\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.2.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,39 +55,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\AuctionController.cs" />
-    <Compile Include="Controller\BidsController.cs" />
-    <Compile Include="Dtos\AuctionDto.cs" />
-    <Compile Include="Dtos\BidDto.cs" />
-    <Compile Include="Controller\StatusController.cs" />
+    <Compile Include="Hubs\AuctionsHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DotNetBay.Core\DotNetBay.Core.csproj">
-      <Project>{9EF46B21-B552-4CC6-A4C0-E81091A4064B}</Project>
-      <Name>DotNetBay.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DotNetBay.Data.EF\DotNetBay.Data.EF.csproj">
-      <Project>{A65C0C95-BDFD-4F20-89E8-72354E65A56A}</Project>
-      <Name>DotNetBay.Data.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DotNetBay.Interfaces\DotNetBay.Interfaces.csproj">
-      <Project>{17745E6C-337C-44BD-9C50-5F1D45CEADA5}</Project>
-      <Name>DotNetBay.Interfaces</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DotNetBay.Model\DotNetBay.Model.csproj">
       <Project>{908D8739-3185-46EB-A03E-6B6C3849857C}</Project>
       <Name>DotNetBay.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DotNetBay.SignalR\DotNetBay.SignalR.csproj">
-      <Project>{735355a4-0cee-42a5-94a0-98af0c09706b}</Project>
-      <Name>DotNetBay.SignalR</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
