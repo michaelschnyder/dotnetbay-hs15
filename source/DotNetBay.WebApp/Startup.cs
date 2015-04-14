@@ -28,7 +28,9 @@ namespace DotNetBay.WebApp
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             app.UseWebApi(config);
-            
+
+            app.MapSignalR();
+
             // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
         }
     }
