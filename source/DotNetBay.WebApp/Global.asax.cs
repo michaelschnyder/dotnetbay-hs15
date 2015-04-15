@@ -33,7 +33,7 @@ namespace DotNetBay.WebApp
             AuctionRunner.Start();
 
             AuctionRunner.Auctioneer.AuctionStarted += (sender, args) => AuctionsHub.NotifyAuctionStarted(args.Auction);
-            AuctionRunner.Auctioneer.AuctionEnded += (sender, args) => AuctionsHub.NotifyAuctionClosed(args.Auction);
+            AuctionRunner.Auctioneer.AuctionEnded += (sender, args) => AuctionsHub.NotifyAuctionEnded(args.Auction);
 
             AuctionRunner.Auctioneer.BidAccepted += (sender, args) => AuctionsHub.NotifyNewBid(args.Auction, args.Bid);
         }

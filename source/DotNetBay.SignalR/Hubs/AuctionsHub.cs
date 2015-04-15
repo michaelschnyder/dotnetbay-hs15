@@ -18,8 +18,10 @@ namespace DotNetBay.SignalR.Hubs
         {
         }
 
-        public static void NotifyAuctionClosed(Auction auction)
+        public static void NotifyAuctionEnded(Auction auction)
         {
+            GlobalHost.ConnectionManager.GetHubContext<AuctionsHub>()
+                .Clients.All.NewAuction(auction.Id, auction.Title);
         }
     }
 }
