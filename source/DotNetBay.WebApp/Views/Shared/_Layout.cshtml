@@ -42,5 +42,21 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
+    <script src="~/signalr"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script>
+    $(function () {
+        // Reference the auto-generated proxy for the hub.
+        var auctionsHub = $.connection.auctionsHub;
+
+        // Start the connection.
+        $.connection.hub.start().done(function () {
+            alert("connected");
+        });
+    });
+    </script>
 </body>
 </html>
