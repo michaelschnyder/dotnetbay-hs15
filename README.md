@@ -5,9 +5,11 @@ Branch: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9a
 
 This is a solution branch for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
-## ASP.NET MVC + Web API + WPF Client Combination
-This is a sample solution where the tree solutions for ASP.NET MVC, ASP.NET Web API and WPF (MVVM Version) are combined to one single solution. Therefore every feature from the branches ASP.NET MVC, Web API and WPF (MVVM) are available here. The WPF client has been adapted to used the RestFul API instad of using any data layer.
+## Complete ASP.NET MVC + Web API + WPF + SignalR Solution
+This is a sample solution where the tree solutions for ASP.NET MVC, ASP.NET Web API and WPF (MVVM Version) are combined to one single solution. Therefore every feature from the branches ASP.NET MVC, Web API and WPF (MVVM) are available here. The WPF client has been adapted to used the RestFul API instad of using any data layer. 
 
+### SignalR
+Both WPF and MVC use SignalR to get the updates from the Server when an auction starts, closes, etc.
 
 ### WPF Client (MVVM)
 See https://github.com/michaelschnyder/dotnetbay/tree/mvvm for details
