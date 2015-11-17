@@ -11,6 +11,7 @@ namespace DotNetBay.Test.Storage
 {
     public class FileSystemMainRepositoryTests : MainRepositoryTestBase
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
         [TestCase]
         [ExpectedException(typeof(Exception))]
         public void GivenEmptyRepo_AddAuctionAndMemberFromOtherInstance_ShouldRaiseException()
@@ -38,6 +39,7 @@ namespace DotNetBay.Test.Storage
             return new TempFileMainRepositoryFactory();
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
         public class TempFileMainRepositoryFactory : IRepositoryFactory
         {
             private TempDirectory tempDirectory;
