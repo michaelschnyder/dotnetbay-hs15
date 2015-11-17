@@ -1,6 +1,6 @@
 # dotnetbay - A .NET Auction Solution 
-Master: [![Build status](https://ci.appveyor.com/api/projects/status/qp7ueees06ri8agu?svg=true)](https://ci.appveyor.com/project/michaelschnyder/fhnw-dotnetbay)
-Fork: [![Build status](https://ci.appveyor.com/api/projects/status/82sl4qpht9atbdeb?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay)
+Master: [![Build status](https://ci.appveyor.com/api/projects/status/12jpygnkl2ve3qq9/branch/master?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay-hs15/branch/master)
+Project: [![Build status](https://ci.appveyor.com/api/projects/status/12jpygnkl2ve3qq9?svg=true)](https://ci.appveyor.com/project/michaelschnyder/dotnetbay-hs15)
 
 This is a solution repository for the bootstrapped solution from https://github.com/FHNW-dnead/dotnetbay
 
@@ -8,19 +8,19 @@ This is a solution repository for the bootstrapped solution from https://github.
 
 With focus on the .NET-Stack, at least the following technologies have been added to extend the base implementation.
 
-* WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
-* EntityFramework  ([EntityFramework Solution](https://github.com/michaelschnyder/dotnetbay/tree/ef), [Combined EntityFramework + MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm-ef))
-* ASP.NET MVC 5 UI  ([Solution](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc))
-* ASP.NET Web API ([SelfHosted](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-webapi), [Combined ASP.NET MVC + Web API](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-mvc-webapi), [Final Solution](https://github.com/michaelschnyder/dotnetbay/tree/aspnet-wpf))
+* WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
+* EntityFramework  ([EntityFramework Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/ef), [Combined EntityFramework + MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm-ef))
+* ASP.NET MVC 5 UI  ([Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/aspnet-mvc))
+* ASP.NET Web API ([SelfHosted](https://github.com/michaelschnyder/dotnetbay-hs15/tree/aspnet-webapi), [Combined ASP.NET MVC + Web API](https://github.com/michaelschnyder/dotnetbay-hs15/tree/aspnet-mvc-webapi), [Final Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/aspnet-wpf))
 * ASP.NET SignalR
 
 ## Contribution
 The following products / tools are needed to contribute / fork.
 
 **For Development**
-* MS Visual Studio (at least Community Version). [http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx](http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx "http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx")
-* ReSharper (optional). [https://www.jetbrains.com/student/](https://www.jetbrains.com/student/ "https://www.jetbrains.com/student/")
-* StyleCop 4.7 (optional). [http://stylecop.codeplex.com/releases/view/79972](http://stylecop.codeplex.com/releases/view/79972 "http://stylecop.codeplex.com/releases/view/79972") 
+* Microsoft Visual Studio 2015 (at least Community Version). [https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx](https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx "https://www.visualstudio.com/en-us/products/visual-studio-community-vs.aspx")
+* Jetbrains ReSharper (optional). [https://www.jetbrains.com/student/](https://www.jetbrains.com/student/ "https://www.jetbrains.com/student/")
+* StyleCop Rules (optional, VS 2015 only). [https://johnkoerner.com/csharp/using-analyzers-in-your-projects/] ("https://johnkoerner.com/csharp/using-analyzers-in-your-projects/") 
 
 
 **For Pleasure**
