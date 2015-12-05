@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using DotNetBay.Data.FileStorage;
 using DotNetBay.Interfaces;
@@ -9,28 +10,29 @@ using NUnit.Framework;
 
 namespace DotNetBay.Test.Storage
 {
+    [SuppressMessage("ReSharper", "InconsistentNaming", Justification = "This is a testclass")]
     public class FileSystemMainRepositoryTests : MainRepositoryTestBase
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
+        [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "These are tests, thats fine!")]
         [TestCase]
-        [ExpectedException(typeof(Exception))]
+        [ExpectedException(typeof(FileStorageException))]
         public void GivenEmptyRepo_AddAuctionAndMemberFromOtherInstance_ShouldRaiseException()
         {
-            var myAuction = CreateAnAuction();
-            var myMember = CreateAMember();
+            var createdAuction = CreateAnAuction();
+            var createdMember = CreateAMember();
 
             // References
-            myAuction.Seller = myMember;
-            myMember.Auctions = new List<Auction>(new[] { myAuction });
+            createdAuction.Seller = createdMember;
+            createdMember.Auctions = new List<Auction>(new[] { createdAuction });
 
             using (var factory = this.CreateFactory())
             {
                 var initRepo = factory.CreateMainRepository();
-                initRepo.Add(myAuction);
+                initRepo.Add(createdAuction);
                 initRepo.SaveChanges();
 
                 var testRepo = factory.CreateMainRepository();
-                testRepo.Add(myAuction);
+                testRepo.Add(createdAuction);
             }
         }
 
@@ -39,7 +41,7 @@ namespace DotNetBay.Test.Storage
             return new TempFileMainRepositoryFactory();
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
+        [SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores", Justification = "These are tests, thats fine!")]
         public class TempFileMainRepositoryFactory : IRepositoryFactory
         {
             private TempDirectory tempDirectory;
