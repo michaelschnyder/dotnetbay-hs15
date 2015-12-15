@@ -5,6 +5,8 @@ using Microsoft.Azure;
 using System;
 using System.Linq;
 
+using Microsoft.SqlServer.Server;
+
 namespace DotNetBay.Common
 {
     public class DotNetBayAppSettings
@@ -19,7 +21,7 @@ namespace DotNetBay.Common
 
         private string GetDbConnection(string name)
         {
-            if (this.IsAzureEnvironment())
+            if (IsAzureEnvironment())
             {
                 return CloudConfigurationManager.GetSetting(name);
             }
@@ -29,12 +31,12 @@ namespace DotNetBay.Common
             }
         }
 
-        private bool IsAzureEnvironment()
+        private static bool IsAzureEnvironment()
         {
             var loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies();
 
             return loadedAssemblies.Any(a 
-                => a.FullName.StartsWith("Microsoft.WindowsAzure.ServiceRuntime"));
+                => a.FullName.StartsWith("Microsoft.WindowsAzure.ServiceRuntime", StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }
