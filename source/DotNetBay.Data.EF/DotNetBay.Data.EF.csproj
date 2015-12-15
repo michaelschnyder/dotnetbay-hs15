@@ -63,6 +63,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DotNetBay.Common\DotNetBay.Common.csproj">
+      <Project>{316a27ff-f33d-4036-b1cc-1342496e06cd}</Project>
+      <Name>DotNetBay.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DotNetBay.Interfaces\DotNetBay.Interfaces.csproj">
       <Project>{17745E6C-337C-44BD-9C50-5F1D45CEADA5}</Project>
       <Name>DotNetBay.Interfaces</Name>

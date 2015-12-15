@@ -1,12 +1,13 @@
 ﻿using System.Data.Entity;
 
 using DotNetBay.Model;
+using DotNetBay.Common;
 
 namespace DotNetBay.Data.EF
 {
     public class MainDbContext : DbContext
     {
-        public MainDbContext() : base("DatabaseConnection")
+        public MainDbContext() : base(new DotNetBayAppSettings().DatabaseConnection)
         {
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;

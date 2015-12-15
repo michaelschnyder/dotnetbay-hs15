@@ -57,10 +57,14 @@
   <ItemGroup>
     <Folder Include="DotNetBay.AzureWorkerContent\" />
     <Folder Include="DotNetBay.WebAppContent\" />
+    <Folder Include="Profiles" />
   </ItemGroup>
   <ItemGroup>
     <DiagnosticsConfiguration Include="DotNetBay.AzureWorkerContent\diagnostics.wadcfgx" />
     <DiagnosticsConfiguration Include="DotNetBay.WebAppContent\diagnostics.wadcfgx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishProfile Include="Profiles\fhnw-dnead-dotnetbay-hs15Production.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

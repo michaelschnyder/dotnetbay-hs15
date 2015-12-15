@@ -3,13 +3,15 @@
   <Role name="DotNetBay.WebApp">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=fhnwdneaddotnetbayhs15;AccountKey=MtybCsVdYK7uxN7ZW22lxKukbMpU05xyL2aPb6qAHUpMi5J62mdGAcjP3KCPHZQmwhswBCmeHaV/IzJL2okj2w==" />
+      <Setting name="DatabaseConnection" value="Server=tcp:fhnw-dnead-hs15.database.windows.net,1433;Database=dnead-dotnetbay;User ID=sqladmin@fhnw-dnead-hs15;Password=abc.123$;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" />
     </ConfigurationSettings>
   </Role>
   <Role name="DotNetBay.AzureWorker">
     <Instances count="1" />
     <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=fhnwdneaddotnetbayhs15;AccountKey=MtybCsVdYK7uxN7ZW22lxKukbMpU05xyL2aPb6qAHUpMi5J62mdGAcjP3KCPHZQmwhswBCmeHaV/IzJL2okj2w==" />
+      <Setting name="DatabaseConnection" value="Server=tcp:fhnw-dnead-hs15.database.windows.net,1433;Database=dnead-dotnetbay;User ID=sqladmin@fhnw-dnead-hs15;Password=abc.123$;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" />
     </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>
