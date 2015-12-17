@@ -44,7 +44,6 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
 
     <script src="~/Scripts/jquery.signalR-2.2.0.js"></script>
-    <script src="~/signalr"></script>
     <script src="~/signalr/hubs"></script>
 
     <script>
@@ -54,7 +53,13 @@
 
         // Start the connection.
         $.connection.hub.start().done(function () {
-            alert("connected");
+            console.info('connected to signalR');
+
+            auctionsHub.client.newAuction = function (auctionId, auctionTitle, amount) { console.log('new auction \'' + auctionTitle + '\' (' + amount + ')'); }
+            auctionsHub.client.NewBid = function (auctionId, auctionTitle, amount, bidder) { console.log('new bid for auction \'' + auctionTitle + '\' by \'' + bidder + '\''); }
+            auctionsHub.client.auctionStarted = function (auctionId, auctionTitle) { console.log('auction started \'' + auctionTitle + '\''); }
+            auctionsHub.client.auctionEnded = function (auctionId, auctionTitle) { console.log('auction ended \'' + auctionTitle + '\''); }
+
         });
     });
     </script>
