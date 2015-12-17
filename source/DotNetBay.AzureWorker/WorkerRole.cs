@@ -1,14 +1,11 @@
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
-using Microsoft.WindowsAzure.Storage;
+using DotNetBay.Data.EF;
+using DotNetBay.Core.Execution;
+using System.Data.Entity.SqlServer;
 
 namespace DotNetBay.AzureWorker
 {
@@ -20,6 +17,11 @@ namespace DotNetBay.AzureWorker
         public override void Run()
         {
             Trace.TraceInformation("DotNetBay.AzureWorker is running");
+
+            // ROLA - This is a hack to ensure that Entity Framework SQL Provider is copied across to the output folder.
+            // As it is installed in the GAC, Copy Local does not work. It is required for probing.
+            // Fixed "Provider not loaded" error
+            var ensureDLLIsCopied = SqlProviderServices.Instance;
 
             try
             {
@@ -60,11 +62,25 @@ namespace DotNetBay.AzureWorker
 
         private async Task RunAsync(CancellationToken cancellationToken)
         {
-            // TODO: Replace the following with your own logic.
+            // DotNetBay startup
+            var mainRepository = new EFMainRepository();
+            mainRepository.SaveChanges();
+
+            var auctionRunner = new AuctionRunner(mainRepository);
+
+            ////auctionRunner.Auctioneer.AuctionStarted += (sender, args) => AuctionsHub.NotifyAuctionStarted(args.Auction);
+            ////auctionRunner.Auctioneer.AuctionEnded += (sender, args) => AuctionsHub.NotifyAuctionEnded(args.Auction);
+            ////auctionRunner.Auctioneer.BidAccepted += (sender, args) => AuctionsHub.NotifyNewBid(args.Auction, args.Bid);
+
+            auctionRunner.Auctioneer.AuctionStarted += (sender, args) => Trace.TraceInformation("Auction has started");
+            auctionRunner.Auctioneer.AuctionEnded += (sender, args) => Trace.TraceInformation("Auction has endded");
+            auctionRunner.Auctioneer.BidAccepted += (sender, args) => Trace.TraceInformation("Bid has been accepted");
+
             while (!cancellationToken.IsCancellationRequested)
             {
                 Trace.TraceInformation("Working");
-                await Task.Delay(1000);
+                auctionRunner.RunOnce();
+                await Task.Delay(3000);
             }
         }
     }

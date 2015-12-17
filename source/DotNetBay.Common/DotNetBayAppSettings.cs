@@ -1,25 +1,32 @@
 ﻿using System.Configuration;
-using System.Reflection;
 
 using Microsoft.Azure;
 using System;
 using System.Linq;
 
-using Microsoft.SqlServer.Server;
-
 namespace DotNetBay.Common
 {
     public class DotNetBayAppSettings
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This is fine.")]
         public string DatabaseConnection
         {
             get
             {
-                return this.GetDbConnection("DatabaseConnection");
+                return GetDbConnection("DatabaseConnection");
             }
         }
 
-        private string GetDbConnection(string name)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic", Justification = "This is fine.")]
+        public bool HasWorker
+        {
+            get
+            {
+                return IsAzureEnvironment();
+            }
+        }
+
+        private static string GetDbConnection(string name)
         {
             if (IsAzureEnvironment())
             {
@@ -36,7 +43,7 @@ namespace DotNetBay.Common
             var loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies();
 
             return loadedAssemblies.Any(a 
-                => a.FullName.StartsWith("Microsoft.WindowsAzure.ServiceRuntime", StringComparison.InvariantCultureIgnoreCase));
+                => a.FullName.StartsWith("Microsoft.WindowsAzure.ServiceRuntime", StringComparison.OrdinalIgnoreCase));
         }
     }
 }
