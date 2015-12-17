@@ -7,12 +7,14 @@ This is a solution repository for the bootstrapped solution from https://github.
 ## Sample Implementations
 
 With focus on the .NET-Stack, at least the following technologies have been added to extend the base implementation.
+The following branches represent a solution for each of the topics, where the branches base on each other from top to buttom, i.e. "Windows Azure" bases on all the previous solutions
 
 * WPF / XAML UI ([WPF Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/wpf), [MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm))
 * EntityFramework  ([EntityFramework Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/ef), [Combined EntityFramework + MVVM Solution](https://github.com/michaelschnyder/dotnetbay/tree/mvvm-ef))
 * ASP.NET MVC 5 UI  ([Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/aspnet-mvc))
 * ASP.NET Web API ([SelfHosted](https://github.com/michaelschnyder/dotnetbay-hs15/tree/aspnet-webapi), [Combined ASP.NET MVC + Web API](https://github.com/michaelschnyder/dotnetbay-hs15/tree/aspnet-mvc-webapi), [Final Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/aspnet-wpf))
-* ASP.NET SignalR
+* ASP.NET SignalR ([Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/aspnet-wpf-signalr))
+* Microsoft Azure ([Solution](https://github.com/michaelschnyder/dotnetbay-hs15/tree/azure))
 
 ## Contribution
 The following products / tools are needed to contribute / fork.
